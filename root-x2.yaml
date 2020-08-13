@@ -1,0 +1,23 @@
+ceremony-type: root
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  store-key-in-slot: 1094195990
+  store-key-with-label: root-x2
+key:
+  type: ecdsa
+  ecdsa-curve: P-384
+outputs:
+  public-key-path: root-x2.key.pem
+  certificate-path: root-x2.cert.pem
+certificate-profile:
+  signature-algorithm: ECDSAWithSHA384
+  # Must match x2-signed-by-x1.yaml
+  common-name: (FAKE) Let's Encrypt Root X2
+  organization: Let's Encrypt
+  country: US
+  not-before: 2020-09-04 00:00:00
+  not-after: 2040-09-17 16:00:00
+  key-usages:
+      - Cert Sign
+      - CRL Sign
