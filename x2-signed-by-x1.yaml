@@ -25,3 +25,10 @@ certificate-profile:
   policies:
     - oid: 2.23.140.1.2.1
     - oid: 1.3.6.1.4.1.44947.1.1.1
+skip-lints:
+  # We don't use our roots to sign OCSP responses, so we don't need the digitalSignature key usage.
+  - n_ca_digital_signature_not_set
+  # This cert is a cross-sign, so not setting an EKU is fine (Mozilla Root Program §5.3).
+  - n_mp_allowed_eku
+  # This cert is not intended to be Technically Constrained.
+  - n_sub_ca_eku_missing
