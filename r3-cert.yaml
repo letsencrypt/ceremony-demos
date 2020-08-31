@@ -19,6 +19,7 @@ certificate-profile:
   key-usages:
       - Cert Sign
       - CRL Sign
+      - Digital Signature
   crl-url: http://x1.c.lencr.org/
   issuer-url: http://x1.i.lencr.org/
   policies:

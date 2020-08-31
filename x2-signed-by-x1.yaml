@@ -3,7 +3,7 @@ pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
   signing-key-slot: 1094195990
-  signing-key-label: root-x2
+  signing-key-label: root-x1
 inputs:
   issuer-certificate-path: root-x1.cert.pem
   public-key-path: root-x2.key.pem
