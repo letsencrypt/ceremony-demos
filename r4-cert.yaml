@@ -19,11 +19,9 @@ certificate-profile:
   key-usages:
       - Cert Sign
       - CRL Sign
+      - Digital Signature
   crl-url: http://x1.c.lencr.org/
   issuer-url: http://x1.i.lencr.org/
   policies:
     - oid: 2.23.140.1.2.1
     - oid: 1.3.6.1.4.1.44947.1.1.1
-skip-lints:
-  # We don't use our intermediates to sign OCSP responses, so we don't need the digitalSignature key usage.
-  - n_ca_digital_signature_not_set
