@@ -11,6 +11,8 @@ ceremony --config e1-key.yaml
 ceremony --config e2-key.yaml
 ceremony --config r3-key.yaml
 ceremony --config r4-key.yaml
+ceremony --config r3-cross-csr.yaml
+ceremony --config r4-cross-csr.yaml
 
 # Simulating root HSM
 ceremony --config root-x1.yaml
@@ -32,3 +34,11 @@ done
 for c in *.crl.pem ; do
   openssl crl -inform pem -in $c  -text -noout > $c.txt
 done
+
+for f in root-x2.cert.pem.txt x2-signed-by-x1.cert.pem.txt root-x2.crl.pem.txt int-e1.cert.pem.txt int-e2.cert.pem.txt int-r3.cert.pem.txt int-r4.cert.pem.txt; do
+  echo $f
+  echo '```text'
+  cat $f
+  echo '```'
+  echo
+done > output-for-forum.txt
