@@ -23,3 +23,16 @@ certificate-profile:
   key-usages:
       - Cert Sign
       - CRL Sign
+skip-lints:
+  # This is a root, not a sub-CA, so these don't apply.
+  - e_ext_authority_key_identifier_missing
+  - e_ext_authority_key_identifier_no_key_identifier
+  - e_sub_ca_aia_missing
+  - e_sub_ca_certificate_policies_missing
+  - e_sub_ca_crl_distribution_points_missing
+  - w_sub_ca_aia_does_not_contain_issuing_ca_url
+  - n_sub_ca_eku_missing
+  # The digitalSignature key usage bit is required for all Root CA Certificates
+  # which which are used to sign OCSP responses (BRs 7.1.2.1b). We do not sign
+  # OCSP with our root certs.
+  - n_ca_digital_signature_not_set
