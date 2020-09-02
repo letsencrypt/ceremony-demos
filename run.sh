@@ -48,6 +48,12 @@ openssl verify -check_ss_sig -attime 1609459200 -CAfile root-x1.cert.pem -purpos
 openssl crl -verify -CAfile root-x1.cert.pem -in root-x1.crl.pem -noout
 openssl crl -verify -CAfile root-x2.cert.pem -in root-x2.crl.pem -noout
 
+# Simulate cross-signing from a third-party CA based on our cross-csr output.
+openssl ca -batch -extensions x509_extensions -out int-r3.cross-cert.pem -config openssl.conf -infiles int-r3.cross-csr.pem
+openssl ca -batch -extensions x509_extensions -out int-r4.cross-cert.pem -config openssl.conf -infiles int-r4.cross-csr.pem
+
+openssl verify -check_ss_sig -CAfile third-party-ca/ca.crt -purpose sslserver int-r3.cross-cert.pem int-r4.cross-cert.pem
+
 rm root-x1.key.pem
 rm root-x1.cert.pem
 
