@@ -1,0 +1,24 @@
+ceremony-type: cross-csr
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 703725468
+  signing-key-label: int-r4
+inputs:
+  public-key-path: int-r4.key.pem
+outputs:
+  csr-path: int-r4.cross-csr.pem
+certificate-profile:
+  # Must match r4-cert.yaml
+  common-name: (FAKE) R3
+  organization: Let's Encrypt
+  country: US
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+      - Digital Signature
+  crl-url: http://crl.identrust.com/DSTROOTCAX3CRL.crl
+  issuer-url: http://apps.identrust.com/roots/dstrootcax3.p7c
+  policies:
+    - oid: 2.23.140.1.2.1
+    - oid: 1.3.6.1.4.1.44947.1.1.1
