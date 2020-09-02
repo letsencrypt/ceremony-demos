@@ -11,17 +11,19 @@ ceremony --config e1-key.yaml
 ceremony --config e2-key.yaml
 ceremony --config r3-key.yaml
 ceremony --config r4-key.yaml
+ceremony --config r3-cross-csr.yaml
+ceremony --config r4-cross-csr.yaml
 
 # Simulating root HSM
 ceremony --config root-x1.yaml
 ceremony --config root-x2.yaml
-ceremony --config x2-signed-by-x1.yaml
 ceremony --config e1-cert.yaml
 ceremony --config e2-cert.yaml
 ceremony --config r3-cert.yaml
 ceremony --config r4-cert.yaml
 ceremony --config root-x1.crl.yaml
 ceremony --config root-x2.crl.yaml
+ceremony --config x2-signed-by-x1.yaml
 
 rm root-x1.key.pem
 rm root-x1.cert.pem
