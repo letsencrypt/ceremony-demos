@@ -3,7 +3,7 @@
 // - All certificates with the same Issuer string should have the same RawIssuer
 // - All certificates with the same Subject string should have the same RawIssuer
 // - All certificates with the same Issuer should have the same CRL and AIA Issuer URLs
-// - All certificates iwth the same Subject should have the same public key.
+// - All certificates with the same Subject should have the same public key.
 package main
 
 import (
