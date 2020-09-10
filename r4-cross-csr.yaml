@@ -10,9 +10,9 @@ outputs:
   csr-path: int-r4.cross-csr.pem
 certificate-profile:
   # Must match r4-cert.yaml
-  common-name: (FAKE) R4
-  organization: Let's Encrypt
-  country: US
+  common-name: Example RSA 2
+  organization: Example
+  country: XX
   key-usages:
       - Cert Sign
       - CRL Sign

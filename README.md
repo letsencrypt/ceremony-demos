@@ -1,10 +1,11 @@
 # Let's Encrypt 2020 Hierarchy
 
-Let's Encrypt is generating a new ECDSA P-384 root and new intermediates in
-2020. We will be using [Boulder's `ceremony` tooling to generate these][ceremony].
+Let's Encrypt generated ECDSA P-384 root and new intermediates in
+2020. We will used [Boulder's `ceremony` tooling to generate these][ceremony].
 
-This directory contains example config files that simulate the certificate
-profiles we will generate in detail. To try it out:
+This directory contains example config files that simulated the certificate
+profiles in detail. We used it to gather feedback prior to our key ceremony.
+To try it out:
 
  - install the `ceremony` tool in your $PATH
  - install SoftHSMv2

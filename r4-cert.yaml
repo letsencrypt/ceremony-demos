@@ -11,9 +11,9 @@ outputs:
   certificate-path: int-r4.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
-  common-name: (FAKE) R4
-  organization: Let's Encrypt
-  country: US
+  common-name: Example RSA 2
+  organization: Example
+  country: XX
   not-before: 2020-09-04 00:00:00
   not-after: 2025-09-15 16:00:00
   key-usages:

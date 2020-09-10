@@ -12,9 +12,9 @@ outputs:
   certificate-path: root-x2.cert.pem
 certificate-profile:
   signature-algorithm: ECDSAWithSHA384
-  common-name: (FAKE) Let's Encrypt Root X2
-  organization: Let's Encrypt
-  country: US
+  common-name: Example Root 2
+  organization: Example
+  country: XX
   not-before: 2020-09-04 00:00:00
   not-after: 2040-09-17 16:00:00
   key-usages:
