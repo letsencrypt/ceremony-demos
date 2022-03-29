@@ -1,8 +1,9 @@
 #!/bin/bash -exv
-#
-# This doesn't really need to be run again. I ran it once to set up a SoftHSM
-# directory, but then checked in the SoftHSM files so run.sh can be run
-# repeatedly with the same slot ids.
+
+# This doesn't really need to be run again. It was used to generate the
+# //softhsm/ directory which is checked into this repository, but now that
+# directory can be left untouched while the yaml config files statically
+# reference its pin and slots.
 
 export SOFTHSM2_CONF=$PWD/softhsm2.conf
 echo "directories.tokendir = $PWD/softhsm/" > $SOFTHSM2_CONF
