@@ -1,1 +1,5 @@
 softhsm2.conf
+softhsm/
+*.cert.pem
+*.cert.txt
+*.key.pem
