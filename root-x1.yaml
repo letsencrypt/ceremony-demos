@@ -5,7 +5,7 @@ ceremony-type: root
 pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
-  store-key-in-slot: 1094195990
+  store-key-in-slot: 1307844626
   store-key-with-label: root-x1
 key:
   type: rsa

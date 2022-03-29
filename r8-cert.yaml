@@ -2,20 +2,20 @@ ceremony-type: intermediate
 pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
-  signing-key-slot: 1094195990
+  signing-key-slot: 1307844626
   signing-key-label: root-x1
 inputs:
   issuer-certificate-path: root-x1.cert.pem
-  public-key-path: int-r4.key.pem
+  public-key-path: int-r8.key.pem
 outputs:
-  certificate-path: int-r4.cert.pem
+  certificate-path: int-r8.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
-  common-name: Example RSA 2
-  organization: Example
+  common-name: (FAKE) R8
+  organization: (FAKE) Let's Encrypt
   country: XX
-  not-before: 2020-09-04 00:00:00
-  not-after: 2025-09-15 16:00:00
+  not-before: 2022-09-07 00:00:00
+  not-after: 2027-09-06 23:59:59
   key-usages:
       - Cert Sign
       - CRL Sign
