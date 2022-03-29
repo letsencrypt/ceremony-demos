@@ -1,17 +1,29 @@
-# Let's Encrypt 2020 Hierarchy
+# Let's Encrypt 2022 Ceremony
 
-Let's Encrypt generated ECDSA P-384 root and new intermediates in
-2020. We will used [Boulder's `ceremony` tooling to generate these][ceremony].
+Let's Encrypt plans to generate new intermediates (both RSA 2048 and ECDSA P-384) in 2022, to complement the cohort of existing intermediates (R3, R4, E1, and E2) already present in our hierarchy.
 
 This directory contains example config files that simulated the certificate
-profiles in detail. We used it to gather feedback prior to our key ceremony.
+profiles in detail. We are using it to gather feedback prior to our key ceremony.
+
 To try it out:
 
- - install the `ceremony` tool in your $PATH
- - install SoftHSMv2
- - Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
-   install.
- - Run ./run.sh.
- - If you make any modifications, run ./reset.sh && ./run.sh.
+- Install the [`ceremony`](https://github.com/letsencrypt/boulder/blob/main/cmd/ceremony/README.md) tool in your `$PATH`.
 
-[ceremony]: https://github.com/letsencrypt/boulder/blob/main/cmd/ceremony/README.md
+  ```sh
+  go install https://github.com/letsencrypt/boulder/cmd/ceremony
+  ```
+
+- Install [SoftHSMv2](https://github.com/opendnssec/SoftHSMv2).
+
+  ```sh
+  sudo apt install softhsm2
+  ```
+
+- Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
+  install.
+
+- Execute the demo ceremony.
+
+  ```sh
+  ./reset.sh && ./run.sh`
+  ```
