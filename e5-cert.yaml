@@ -11,7 +11,7 @@ outputs:
   certificate-path: int-e5.cert.pem
 certificate-profile:
   signature-algorithm: ECDSAWithSHA384
-  common-name: (FAKE) E1
+  common-name: (FAKE) E5
   organization: (FAKE) Let's Encrypt
   country: XX
   not-before: 2022-09-07 00:00:00

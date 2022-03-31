@@ -1,3 +1,6 @@
+# Note: This doesn't simulate any part of the upcoming ceremony,
+# it just creates a fake version of our existing "ISRG Root X1"
+# so we can simulate signing intermediates from it.
 ceremony-type: root
 pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
@@ -16,7 +19,7 @@ certificate-profile:
   common-name: (FAKE) ISRG Root X2
   organization: Internet Security Research Group
   country: US
-  not-before: 2020-09-07 00:00:00
+  not-before: 2020-09-04 00:00:00
   not-after: 2040-09-17 16:00:00
   key-usages:
       - Cert Sign
