@@ -1,6 +1,6 @@
 #!/bin/bash -exv
 
-# This script simulates a ceremony where we generate new intermediate 
+# This script simulates a ceremony where we generate new intermediate
 # certificates.
 
 # see init-softhsm.sh for slot initialization
@@ -26,9 +26,9 @@ ceremony --config r8-cert.yaml
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.
-# 1672531201 is January 1 2023; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1672531201 -CAfile root-x2.cert.pem -purpose sslserver int-e5.cert.pem int-e6.cert.pem
-openssl verify -check_ss_sig -attime 1672531201 -CAfile root-x1.cert.pem -purpose sslserver int-r7.cert.pem int-r8.cert.pem
+# 1704067201 is January 1 2024; this is necessary because we're testing with NotBefore in the future.
+openssl verify -check_ss_sig -attime 1704067201 -CAfile root-x2.cert.pem -purpose sslserver int-e5.cert.pem int-e6.cert.pem
+openssl verify -check_ss_sig -attime 1704067201 -CAfile root-x1.cert.pem -purpose sslserver int-r7.cert.pem int-r8.cert.pem
 
 # Cleanup artifacts from re-simulated previous ceremonies.
 rm root-x1.key.pem root-x1.cert.pem
