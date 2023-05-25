@@ -28,6 +28,7 @@ skip-lints:
   # This is a root, not a sub-CA, so these don't apply.
   - e_ext_authority_key_identifier_missing
   - e_ext_authority_key_identifier_no_key_identifier
+  - w_sub_ca_aia_missing
   - e_sub_ca_aia_missing
   - e_sub_ca_certificate_policies_missing
   - e_sub_ca_crl_distribution_points_missing
