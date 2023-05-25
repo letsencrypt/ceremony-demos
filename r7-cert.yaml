@@ -14,8 +14,8 @@ certificate-profile:
   common-name: (FAKE) R7
   organization: (FAKE) Let's Encrypt
   country: XX
-  not-before: 2022-09-07 00:00:00
-  not-after: 2027-09-06 23:59:59
+  not-before: 2023-05-24 00:00:00
+  not-after: 2028-05-23 23:59:59
   key-usages:
       - Cert Sign
       - CRL Sign
