@@ -5,13 +5,13 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: root-x1
 inputs:
-  issuer-certificate-path: root-x1.cert.pem
-  public-key-path: int-r7.key.pem
+  issuer-certificate-path: ./ceremonies/2015/root-x1.cert.pem
+  public-key-path: ./ceremonies/2023/int-r8.key.pem
 outputs:
-  certificate-path: int-r7.cert.pem
+  certificate-path: ./ceremonies/2023/int-r8.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
-  common-name: (FAKE) R7
+  common-name: (FAKE) R8
   organization: (FAKE) Let's Encrypt
   country: XX
   not-before: 2023-05-24 00:00:00
