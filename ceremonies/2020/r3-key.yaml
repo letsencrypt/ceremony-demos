@@ -3,9 +3,9 @@ pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
   store-key-in-slot: 732394342
-  store-key-with-label: int-e5
+  store-key-with-label: int-r3
 key:
-  type: ecdsa
-  ecdsa-curve: P-384
+  type: rsa
+  rsa-mod-length: 2048
 outputs:
-  public-key-path: /run/shm/ceremonies/2023/int-e5.key.pem
+  public-key-path: /run/shm/ceremonies/2020/int-r3.key.pem

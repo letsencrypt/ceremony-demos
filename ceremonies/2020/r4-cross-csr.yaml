@@ -1,0 +1,15 @@
+ceremony-type: cross-csr
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 732394342
+  signing-key-label: int-r4
+inputs:
+  public-key-path: /run/shm/ceremonies/2020/int-r4.key.pem
+outputs:
+  csr-path: /run/shm/ceremonies/2020/int-r4.cross-csr.pem
+certificate-profile:
+  # Must match r4-cert.yaml
+  common-name: Example RSA 2
+  organization: Example
+  country: XX

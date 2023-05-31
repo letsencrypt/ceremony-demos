@@ -11,8 +11,8 @@ key:
   type: rsa
   rsa-mod-length: 4096
 outputs:
-  public-key-path: ./ceremonies/2015/root-x1.key.pem
-  certificate-path: ./ceremonies/2015/root-x1.cert.pem
+  public-key-path: /run/shm/ceremonies/2015/root-x1.key.pem
+  certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) ISRG Root X1
