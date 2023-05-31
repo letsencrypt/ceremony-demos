@@ -1,5 +1,7 @@
 softhsm2.conf
 softhsm/
-*.cert.pem
-*.cert.txt
-*.key.pem
+*.txt
+*.pem
+
+# This symlinked directory gets created by ./run.sh
+ceremony-output
