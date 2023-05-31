@@ -22,8 +22,8 @@ To try it out:
 - Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
   install.
 
-- Execute the demo ceremony.
+- Execute the demo ceremony. Output files are available in the `ceremony-output` symlink pointing to `/run/shm/ceremonies/`. If your OS distribution doesn't have access to [tmpfs facilities](https://man7.org/linux/man-pages/man5/tmpfs.5.html), use a virtual machine or container that can provide a tmpfs.
 
   ```sh
-  ./reset.sh && ./run.sh`
+  ./reset.sh && ./run.sh
   ```
