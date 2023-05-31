@@ -8,7 +8,7 @@ inputs:
   issuer-certificate-path:  /run/shm/ceremonies/2015/root-x1.cert.pem
   public-key-path:  /run/shm/ceremonies/2020/root-x2.key.pem
 outputs:
-  certificate-path:  /run/shm/ceremonies/2020/x2-signed-by-x1.cert.pem
+  certificate-path:  /run/shm/ceremonies/2020/x2-cross-x1.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   # Must match root-x2.yaml

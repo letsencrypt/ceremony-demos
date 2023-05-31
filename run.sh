@@ -11,6 +11,7 @@ function usage() {
 
 if [ "${1}" == "-h" ]; then
     usage
+    # Be nice to those asking for help :)
     exit 0
 fi
 
@@ -37,17 +38,19 @@ fi
 # available to reference.
 ceremony --config ./ceremonies/2015/root-x1.yaml
 ceremony --config ./ceremonies/2020/root-x2.yaml
-ceremony --config ./ceremonies/2020/x2-signed-by-x1.yaml
+ceremony --config ./ceremonies/2020/x2-cross-x1-cert.yaml
 
 # Simulating intermediate HSM
 ceremony --config ./ceremonies/2020/r3-key.yaml
 ceremony --config ./ceremonies/2020/r4-key.yaml
-ceremony --config ./ceremonies/2023/r7-key.yaml
 ceremony --config ./ceremonies/2023/r8-key.yaml
+ceremony --config ./ceremonies/2023/r9-key.yaml
+ceremony --config ./ceremonies/2023/r10-key.yaml
 ceremony --config ./ceremonies/2020/e1-key.yaml
 ceremony --config ./ceremonies/2020/e2-key.yaml
 ceremony --config ./ceremonies/2023/e5-key.yaml
 ceremony --config ./ceremonies/2023/e6-key.yaml
+ceremony --config ./ceremonies/2023/e7-key.yaml
 
 # Simulating root HSM
 ceremony --config ./ceremonies/2020/root-x1.crl.yaml
@@ -56,12 +59,14 @@ ceremony --config ./ceremonies/2020/r3-cert.yaml
 ceremony --config ./ceremonies/2020/r3-cross-csr.yaml
 ceremony --config ./ceremonies/2020/r4-cert.yaml
 ceremony --config ./ceremonies/2020/r4-cross-csr.yaml
-ceremony --config ./ceremonies/2023/r7-cert.yaml
 ceremony --config ./ceremonies/2023/r8-cert.yaml
+ceremony --config ./ceremonies/2023/r9-cert.yaml
+ceremony --config ./ceremonies/2023/r10-cert.yaml
 ceremony --config ./ceremonies/2020/e1-cert.yaml
 ceremony --config ./ceremonies/2020/e2-cert.yaml
 ceremony --config ./ceremonies/2023/e5-cert.yaml
 ceremony --config ./ceremonies/2023/e6-cert.yaml
+ceremony --config ./ceremonies/2023/e7-cert.yaml
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.
@@ -69,8 +74,8 @@ ceremony --config ./ceremonies/2023/e6-cert.yaml
 openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver ${RAMDISK_DIR}/2020/int-r3.cert.pem ${RAMDISK_DIR}/2020/int-r4.cert.pem
 openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver ${RAMDISK_DIR}/2020/int-e1.cert.pem ${RAMDISK_DIR}/2020/int-e2.cert.pem
 ## 1704067201 is January 1 2024; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver ${RAMDISK_DIR}/2023/int-e5.cert.pem ${RAMDISK_DIR}/2023/int-e6.cert.pem
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver ${RAMDISK_DIR}/2023/int-r7.cert.pem ${RAMDISK_DIR}/2023/int-r8.cert.pem
+openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver ${RAMDISK_DIR}/2023/int-e5.cert.pem ${RAMDISK_DIR}/2023/int-e6.cert.pem ${RAMDISK_DIR}/2023/int-e7.cert.pem
+openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver ${RAMDISK_DIR}/2023/int-r8.cert.pem ${RAMDISK_DIR}/2023/int-r9.cert.pem ${RAMDISK_DIR}/2023/int-r10.cert.pem
 
 # Generate human-readable text files from all of ceremony output files.
 for x in $(find -L ${RAMDISK_DIR} -type f -name '*.cert.pem'); do
