@@ -2,11 +2,11 @@
 
 function usage() {
     echo -e "USAGE:
-      This script simulates a ceremony where we generate new intermediate
-      certificates.
+    This script simulates a ceremony where we generate new intermediate
+    certificates.
 
-      ./$(basename ${0}) [-h]
-          -h | Outputs this help text"
+    ./$(basename ${0}) [-h]
+        -h | Outputs this help text"
 }
 
 if [ "${1}" == "-h" ]; then
@@ -27,7 +27,7 @@ echo "directories.tokendir = ${PWD}/softhsm/" > $SOFTHSM2_CONF
 # Store the output in a ramdisk so we don't chew up my disk endlessly running this tooling.
 RAMDISK_DIR=/run/shm/ceremonies
 mkdir -p "${RAMDISK_DIR}"
-for ceremonyYear in $(find ./ceremonies/ -maxdepth 1 -type d -printf '%P '); do 
+for ceremonyYear in $(find ./ceremonies/ -maxdepth 1 -type d -printf '%P '); do
     mkdir -p "${RAMDISK_DIR}/${ceremonyYear}"
 done
 if [ ! -L "ceremony-output" ]; then
@@ -65,29 +65,49 @@ ceremony --config ./ceremonies/2023/r10-cert.yaml
 ceremony --config ./ceremonies/2020/e1-cert.yaml
 ceremony --config ./ceremonies/2020/e2-cert.yaml
 ceremony --config ./ceremonies/2023/e5-cert.yaml
+ceremony --config ./ceremonies/2023/e5-cross-x1-cert.yaml
 ceremony --config ./ceremonies/2023/e6-cert.yaml
+ceremony --config ./ceremonies/2023/e6-cross-x1-cert.yaml
 ceremony --config ./ceremonies/2023/e7-cert.yaml
+ceremony --config ./ceremonies/2023/e7-cross-x1-cert.yaml
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.
+
 ## 1609459200 is January 1 2021; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver ${RAMDISK_DIR}/2020/int-r3.cert.pem ${RAMDISK_DIR}/2020/int-r4.cert.pem
-openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver ${RAMDISK_DIR}/2020/int-e1.cert.pem ${RAMDISK_DIR}/2020/int-e2.cert.pem
+openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
+    ${RAMDISK_DIR}/2020/int-r3.cert.pem \
+    ${RAMDISK_DIR}/2020/int-r4.cert.pem
+
+openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
+    ${RAMDISK_DIR}/2020/int-e1.cert.pem \
+    ${RAMDISK_DIR}/2020/int-e2.cert.pem
+
 ## 1704067201 is January 1 2024; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver ${RAMDISK_DIR}/2023/int-e5.cert.pem ${RAMDISK_DIR}/2023/int-e6.cert.pem ${RAMDISK_DIR}/2023/int-e7.cert.pem
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver ${RAMDISK_DIR}/2023/int-r8.cert.pem ${RAMDISK_DIR}/2023/int-r9.cert.pem ${RAMDISK_DIR}/2023/int-r10.cert.pem
+openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
+    ${RAMDISK_DIR}/2023/int-r8.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r9.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r10.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e5-cross-x1.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e6-cross-x1.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e7-cross-x1.cert.pem
+
+openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
+    ${RAMDISK_DIR}/2023/int-e5.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e6.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e7.cert.pem
 
 # Generate human-readable text files from all of ceremony output files.
 for x in $(find -L ${RAMDISK_DIR} -type f -name '*.cert.pem'); do
-  openssl x509 -text -noout -out "${x%.*}.txt" -in "${x}" &
+    openssl x509 -text -noout -out "${x%.*}.txt" -in "${x}" &
 done
 
 for r in $(find -L ${RAMDISK_DIR} -type f -name '*.cross-csr.pem'); do
-  openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}" &
+    openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}" &
 done
 
 for c in $(find -L ${RAMDISK_DIR} -type f -name '*.crl.pem'); do
-  openssl crl -text -noout -out "${c%.*}.txt" -in "${c}" &
+    openssl crl -text -noout -out "${c%.*}.txt" -in "${c}" &
 done
 
 wait
