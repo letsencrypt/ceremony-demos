@@ -65,11 +65,13 @@ ceremony --config ./ceremonies/2023/r10-cert.yaml
 ceremony --config ./ceremonies/2020/e1-cert.yaml
 ceremony --config ./ceremonies/2020/e2-cert.yaml
 ceremony --config ./ceremonies/2023/e5-cert.yaml
-ceremony --config ./ceremonies/2023/e5-cross-x1-cert.yaml
 ceremony --config ./ceremonies/2023/e6-cert.yaml
-ceremony --config ./ceremonies/2023/e6-cross-x1-cert.yaml
 ceremony --config ./ceremonies/2023/e7-cert.yaml
-ceremony --config ./ceremonies/2023/e7-cross-x1-cert.yaml
+ceremony --config ./ceremonies/2023/h1-cert.yaml
+ceremony --config ./ceremonies/2023/h2-cert.yaml
+ceremony --config ./ceremonies/2023/h5-cert.yaml
+ceremony --config ./ceremonies/2023/h6-cert.yaml
+ceremony --config ./ceremonies/2023/h7-cert.yaml
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.
@@ -88,9 +90,11 @@ openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root
     ${RAMDISK_DIR}/2023/int-r8.cert.pem \
     ${RAMDISK_DIR}/2023/int-r9.cert.pem \
     ${RAMDISK_DIR}/2023/int-r10.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e5-cross-x1.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e6-cross-x1.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7-cross-x1.cert.pem
+    ${RAMDISK_DIR}/2023/int-h1.cert.pem \
+    ${RAMDISK_DIR}/2023/int-h2.cert.pem \
+    ${RAMDISK_DIR}/2023/int-h5.cert.pem \
+    ${RAMDISK_DIR}/2023/int-h6.cert.pem \
+    ${RAMDISK_DIR}/2023/int-h7.cert.pem
 
 openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
     ${RAMDISK_DIR}/2023/int-e5.cert.pem \

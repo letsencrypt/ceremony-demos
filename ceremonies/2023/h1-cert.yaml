@@ -6,12 +6,12 @@ pkcs11:
   signing-key-label: root-x1
 inputs:
   issuer-certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
-  public-key-path: /run/shm/ceremonies/2023/int-e5.key.pem
+  public-key-path: /run/shm/ceremonies/2020/int-e1.key.pem
 outputs:
-  certificate-path: /run/shm/ceremonies/2023/int-e5-cross-x1.cert.pem
+  certificate-path: /run/shm/ceremonies/2023/int-h1.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
-  common-name: (FAKE) E5
+  common-name: (FAKE) H1
   organization: (FAKE) Let's Encrypt
   country: XX
   not-before: 2023-05-24 00:00:00

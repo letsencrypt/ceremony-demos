@@ -1,0 +1,27 @@
+ceremony-type: intermediate
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-x1
+inputs:
+  issuer-certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
+  public-key-path: /run/shm/ceremonies/2023/int-e7.key.pem
+outputs:
+  certificate-path: /run/shm/ceremonies/2023/int-h7.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) H7
+  organization: (FAKE) Let's Encrypt
+  country: XX
+  not-before: 2023-05-24 00:00:00
+  not-after: 2028-05-23 23:59:59
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+      - Digital Signature
+  crl-url: http://x1.c.lencr.org/
+  issuer-url: http://x1.i.lencr.org/
+  policies:
+    - oid: 2.23.140.1.2.1
+    - oid: 1.3.6.1.4.1.44947.1.1.1
