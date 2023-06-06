@@ -1,0 +1,36 @@
+ceremony-type: cross-certificate
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-x1
+inputs:
+  issuer-certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
+  public-key-path: /run/shm/ceremonies/2020/root-x2.key.pem
+outputs:
+  certificate-path: /run/shm/ceremonies/2020/root-x2-cross.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) ISRG Root X2
+  organization: (FAKE) Internet Security Research Group
+  country: US
+  not-before: 2020-09-04 00:00:00
+  not-after: 2025-09-15 16:00:00
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+  crl-url: http://x1.c.lencr.org/
+  issuer-url: http://x1.i.lencr.org/
+  policies:
+    - oid: 2.23.140.1.2.1
+    - oid: 1.3.6.1.4.1.44947.1.1.1
+skip-lints:
+  # The digitalSignature key usage bit is required for all Root CA Certificates
+  # which which are used to sign OCSP responses (BRs 7.1.2.1.b). We do not sign
+  # OCSP with our root certs.
+  - n_ca_digital_signature_not_set
+  # The extKeyUsage extension is required for intermediate certificates, but is
+  # optional for cross-signed certs which share a Subject DN and Public Key with
+  # a Root Certificate (BRs 7.1.2.2.g). This cert is a cross-sign.
+  - n_mp_allowed_eku
+  - n_sub_ca_eku_missing

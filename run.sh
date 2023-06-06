@@ -36,9 +36,13 @@ fi
 
 # Simulate previously-performed ceremonies so we have the keys and certificates
 # available to reference.
+ceremony --config ./ceremonies/2000/root-dst.yaml
 ceremony --config ./ceremonies/2015/root-x1.yaml
 ceremony --config ./ceremonies/2020/root-x2.yaml
-ceremony --config ./ceremonies/2020/x2-cross-x1-cert.yaml
+ceremony --config ./ceremonies/2020/root-x2-cross-cert.yaml
+## The zombie cross-sign
+ceremony --config ./ceremonies/2021/root-x1-cross-cert.yaml
+
 
 # Simulating intermediate HSM
 ceremony --config ./ceremonies/2020/r3-key.yaml
@@ -76,7 +80,7 @@ ceremony --config ./ceremonies/2023/h7-cert.yaml
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.
 
-## 1609459200 is January 1 2021; this is necessary because we're testing with NotBefore in the future.
+## 1609459200 is Dec 31 2021; this is necessary because we're testing with NotBefore in the future.
 openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
     ${RAMDISK_DIR}/2020/int-r3.cert.pem \
     ${RAMDISK_DIR}/2020/int-r4.cert.pem
@@ -85,7 +89,11 @@ openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2020/root
     ${RAMDISK_DIR}/2020/int-e1.cert.pem \
     ${RAMDISK_DIR}/2020/int-e2.cert.pem
 
-## 1704067201 is January 1 2024; this is necessary because we're testing with NotBefore in the future.
+## 1611300000 is Jan 22 2021; this is necessary because we're testing with NotBefore in the future.
+openssl verify -check_ss_sig -attime 1611300000 -CAfile ${RAMDISK_DIR}/2000/root-dst.cert.pem \
+    ${RAMDISK_DIR}/2021/root-x1-cross.cert.pem
+
+## 1704067201 is Dec 31 2024; this is necessary because we're testing with NotBefore in the future.
 openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
     ${RAMDISK_DIR}/2023/int-r8.cert.pem \
     ${RAMDISK_DIR}/2023/int-r9.cert.pem \
