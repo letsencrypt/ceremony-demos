@@ -13,7 +13,7 @@ certificate-profile:
   signature-algorithm: ECDSAWithSHA384
   common-name: (FAKE) E5
   organization: (FAKE) Let's Encrypt
-  country: XX
+  country: US
   not-before: 2023-05-24 00:00:00
   not-after: 2028-05-23 23:59:59
   key-usages:
@@ -24,4 +24,3 @@ certificate-profile:
   issuer-url: http://x2.i.lencr.org/
   policies:
     - oid: 2.23.140.1.2.1
-    - oid: 1.3.6.1.4.1.44947.1.1.1
