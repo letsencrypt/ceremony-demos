@@ -36,44 +36,58 @@ fi
 
 # Simulate previously-performed ceremonies so we have the keys and certificates
 # available to reference.
-ceremony --config ./ceremonies/2000/root-dst.yaml
 ceremony --config ./ceremonies/2015/root-x1.yaml
+
+ceremony --config ./ceremonies/2000/root-dst.yaml
+
 ceremony --config ./ceremonies/2020/root-x2.yaml
 ceremony --config ./ceremonies/2020/root-x2-cross-cert.yaml
+ceremony --config ./ceremonies/2020/root-x1.crl.yaml
+ceremony --config ./ceremonies/2020/root-x2.crl.yaml
+
 ## The zombie cross-sign
 ceremony --config ./ceremonies/2021/root-x1-cross-cert.yaml
 
-
-# Simulating intermediate HSM
-ceremony --config ./ceremonies/2020/r3-key.yaml
-ceremony --config ./ceremonies/2020/r4-key.yaml
-ceremony --config ./ceremonies/2023/r8-key.yaml
-ceremony --config ./ceremonies/2023/r9-key.yaml
-ceremony --config ./ceremonies/2023/r10-key.yaml
 ceremony --config ./ceremonies/2020/e1-key.yaml
 ceremony --config ./ceremonies/2020/e2-key.yaml
-ceremony --config ./ceremonies/2023/e5-key.yaml
-ceremony --config ./ceremonies/2023/e6-key.yaml
-ceremony --config ./ceremonies/2023/e7-key.yaml
-
-# Simulating root HSM
-ceremony --config ./ceremonies/2020/root-x1.crl.yaml
-ceremony --config ./ceremonies/2020/root-x2.crl.yaml
+ceremony --config ./ceremonies/2020/r3-key.yaml
+ceremony --config ./ceremonies/2020/r4-key.yaml
+ceremony --config ./ceremonies/2020/e1-cert.yaml
+ceremony --config ./ceremonies/2020/e2-cert.yaml
 ceremony --config ./ceremonies/2020/r3-cert.yaml
 ceremony --config ./ceremonies/2020/r3-cross-csr.yaml
 ceremony --config ./ceremonies/2020/r4-cert.yaml
 ceremony --config ./ceremonies/2020/r4-cross-csr.yaml
-ceremony --config ./ceremonies/2023/r8-cert.yaml
-ceremony --config ./ceremonies/2023/r9-cert.yaml
-ceremony --config ./ceremonies/2023/r10-cert.yaml
-ceremony --config ./ceremonies/2020/e1-cert.yaml
-ceremony --config ./ceremonies/2020/e2-cert.yaml
+
+
+
+ceremony --config ./ceremonies/2023/e5-key.yaml
+ceremony --config ./ceremonies/2023/e6-key.yaml
+ceremony --config ./ceremonies/2023/e7-key.yaml
+ceremony --config ./ceremonies/2023/e8-key.yaml
+ceremony --config ./ceremonies/2023/e9-key.yaml
+ceremony --config ./ceremonies/2023/r10-key.yaml
+ceremony --config ./ceremonies/2023/r11-key.yaml
+ceremony --config ./ceremonies/2023/r12-key.yaml
+ceremony --config ./ceremonies/2023/r13-key.yaml
+ceremony --config ./ceremonies/2023/r14-key.yaml
+
 ceremony --config ./ceremonies/2023/e5-cert.yaml
 ceremony --config ./ceremonies/2023/e5-cross-cert.yaml
 ceremony --config ./ceremonies/2023/e6-cert.yaml
 ceremony --config ./ceremonies/2023/e6-cross-cert.yaml
 ceremony --config ./ceremonies/2023/e7-cert.yaml
 ceremony --config ./ceremonies/2023/e7-cross-cert.yaml
+ceremony --config ./ceremonies/2023/e8-cert.yaml
+ceremony --config ./ceremonies/2023/e8-cross-cert.yaml
+ceremony --config ./ceremonies/2023/e9-cert.yaml
+ceremony --config ./ceremonies/2023/e9-cross-cert.yaml
+ceremony --config ./ceremonies/2023/r10-cert.yaml
+ceremony --config ./ceremonies/2023/r11-cert.yaml
+ceremony --config ./ceremonies/2023/r12-cert.yaml
+ceremony --config ./ceremonies/2023/r13-cert.yaml
+ceremony --config ./ceremonies/2023/r14-cert.yaml
+
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.
@@ -93,17 +107,24 @@ openssl verify -check_ss_sig -attime 1611300000 -CAfile ${RAMDISK_DIR}/2000/root
 
 ## 1704067201 is Dec 31 2024; this is necessary because we're testing with NotBefore in the future.
 openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2023/int-r8.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r9.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r10.cert.pem \
     ${RAMDISK_DIR}/2023/int-e5-cross.cert.pem \
     ${RAMDISK_DIR}/2023/int-e6-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7-cross.cert.pem
+    ${RAMDISK_DIR}/2023/int-e7-cross.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e8-cross.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e9-cross.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r10.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r11.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r12.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r13.cert.pem \
+    ${RAMDISK_DIR}/2023/int-r14.cert.pem
 
 openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
     ${RAMDISK_DIR}/2023/int-e5.cert.pem \
     ${RAMDISK_DIR}/2023/int-e6.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7.cert.pem
+    ${RAMDISK_DIR}/2023/int-e7.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e8.cert.pem \
+    ${RAMDISK_DIR}/2023/int-e9.cert.pem
+
 
 # Generate human-readable text files from all of ceremony output files.
 for x in $(find -L ${RAMDISK_DIR} -type f -name '*.cert.pem'); do
