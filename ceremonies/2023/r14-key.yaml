@@ -3,9 +3,9 @@ pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
   store-key-in-slot: 732394342
-  store-key-with-label: int-r8
+  store-key-with-label: int-r14
 key:
   type: rsa
   rsa-mod-length: 2048
 outputs:
-  public-key-path: /run/shm/ceremonies/2023/int-r8.key.pem
+  public-key-path: /run/shm/ceremonies/2023/int-r14.key.pem
