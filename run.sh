@@ -1,31 +1,30 @@
 #!/bin/bash -e
 
 function usage() {
-    echo -e "USAGE:
-    This script simulates a ceremony where we generate new intermediate
-    certificates.
+    echo -e "Usage:
+    This script simulates key ceremonies where we previously have
+    or will be generating cryptographic material.
 
-    ./$(basename ${0}) [-h]
+    ./$(basename "${0}") [-h]
         -h | Outputs this help text"
 }
 
 if [ "${1}" == "-h" ]; then
     usage
-    # Be nice to those asking for help :)
     exit 0
 fi
 
-if [ $# -ne 0 ]; then
+if [ "$#" -ne 0 ]; then
     usage
     exit 1
 fi
 
 # see init-softhsm.sh for slot initialization
 export SOFTHSM2_CONF="${PWD}/softhsm2.conf"
-echo "directories.tokendir = ${PWD}/softhsm/" > $SOFTHSM2_CONF
+echo "directories.tokendir = ${PWD}/softhsm/" > ${SOFTHSM2_CONF}
 
 # Store the output in a ramdisk so we don't chew up my disk endlessly running this tooling.
-RAMDISK_DIR=/run/shm/ceremonies
+RAMDISK_DIR="/run/shm/ceremonies"
 mkdir -p "${RAMDISK_DIR}"
 for ceremonyYear in $(find ./ceremonies/ -maxdepth 1 -type d -printf '%P '); do
     mkdir -p "${RAMDISK_DIR}/${ceremonyYear}"
@@ -34,109 +33,66 @@ if [ ! -L "ceremony-output" ]; then
     ln -s "${RAMDISK_DIR}/" ceremony-output
 fi
 
-# Simulate previously-performed ceremonies so we have the keys and certificates
-# available to reference.
-ceremony --config ./ceremonies/2015/root-x1.yaml
+function setup_ceremony_tools() {
+    TMPDIR="/tmp/ceremony-tools"
+    mkdir -p "${TMPDIR}/bin/PRE_2023/"
+    if [ ! -d "${TMPDIR}/boulder" ]; then
+        git clone https://github.com/letsencrypt/boulder/ "${TMPDIR}/boulder"
+    fi
 
-ceremony --config ./ceremonies/2000/root-dst.yaml
+    if [ ! -x "${TMPDIR}/boulder/bin/ceremony" ]; then
+        # Build ceremony from main and store it
+        cd "${TMPDIR}/boulder"
+        make
+    else
+        echo "Found executable ceremony tool built for the 2023 ceremony"
+    fi
 
-ceremony --config ./ceremonies/2020/root-x2.yaml
-ceremony --config ./ceremonies/2020/root-x2-cross-cert.yaml
-ceremony --config ./ceremonies/2020/root-x1.crl.yaml
-ceremony --config ./ceremonies/2020/root-x2.crl.yaml
+    if [ ! -x "${TMPDIR}/bin/PRE_2023/ceremony" ]; then
+        # Build ceremony on the commit prior to removing configuration of Policy OIDs.
+        # This will allow all ceremonies prior to 2023 to complete successfully without
+        # requiring backporting changes to those ceremonies and losing the historical
+        # representation of the ceremony.
+        cd "${TMPDIR}/boulder"
+        git checkout 7d66d67054616867121e822fdc8ae58b10c1d71a
+        make
+        cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/PRE_2023/"
+    else
+        echo "Found executable ceremony tool built for ceremonies prior to 2023"
+    fi
 
-## The zombie cross-sign
-ceremony --config ./ceremonies/2021/root-x1-cross-cert.yaml
+    export _CEREMONY_BIN="${TMPDIR}/boulder/bin/ceremony"
+    export _CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
+}
 
-ceremony --config ./ceremonies/2020/e1-key.yaml
-ceremony --config ./ceremonies/2020/e2-key.yaml
-ceremony --config ./ceremonies/2020/r3-key.yaml
-ceremony --config ./ceremonies/2020/r4-key.yaml
-ceremony --config ./ceremonies/2020/e1-cert.yaml
-ceremony --config ./ceremonies/2020/e2-cert.yaml
-ceremony --config ./ceremonies/2020/r3-cert.yaml
-ceremony --config ./ceremonies/2020/r3-cross-csr.yaml
-ceremony --config ./ceremonies/2020/r4-cert.yaml
-ceremony --config ./ceremonies/2020/r4-cross-csr.yaml
+function _output_human_readable_text_files() {
+    # Generate human-readable text files from all of ceremony output files.
+    for x in $(find -L ${RAMDISK_DIR} -type f -name '*.cert.pem'); do
+        openssl x509 -text -noout -out "${x%.*}.txt" -in "${x}" &
+    done
 
+    for r in $(find -L ${RAMDISK_DIR} -type f -name '*.cross-csr.pem'); do
+        openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}" &
+    done
 
+    for c in $(find -L ${RAMDISK_DIR} -type f -name '*.crl.pem'); do
+        openssl crl -text -noout -out "${c%.*}.txt" -in "${c}" &
+    done
 
-ceremony --config ./ceremonies/2023/e5-key.yaml
-ceremony --config ./ceremonies/2023/e6-key.yaml
-ceremony --config ./ceremonies/2023/e7-key.yaml
-ceremony --config ./ceremonies/2023/e8-key.yaml
-ceremony --config ./ceremonies/2023/e9-key.yaml
-ceremony --config ./ceremonies/2023/r10-key.yaml
-ceremony --config ./ceremonies/2023/r11-key.yaml
-ceremony --config ./ceremonies/2023/r12-key.yaml
-ceremony --config ./ceremonies/2023/r13-key.yaml
-ceremony --config ./ceremonies/2023/r14-key.yaml
+    wait
+}
 
-ceremony --config ./ceremonies/2023/e5-cert.yaml
-ceremony --config ./ceremonies/2023/e5-cross-cert.yaml
-ceremony --config ./ceremonies/2023/e6-cert.yaml
-ceremony --config ./ceremonies/2023/e6-cross-cert.yaml
-ceremony --config ./ceremonies/2023/e7-cert.yaml
-ceremony --config ./ceremonies/2023/e7-cross-cert.yaml
-ceremony --config ./ceremonies/2023/e8-cert.yaml
-ceremony --config ./ceremonies/2023/e8-cross-cert.yaml
-ceremony --config ./ceremonies/2023/e9-cert.yaml
-ceremony --config ./ceremonies/2023/e9-cross-cert.yaml
-ceremony --config ./ceremonies/2023/r10-cert.yaml
-ceremony --config ./ceremonies/2023/r11-cert.yaml
-ceremony --config ./ceremonies/2023/r12-cert.yaml
-ceremony --config ./ceremonies/2023/r13-cert.yaml
-ceremony --config ./ceremonies/2023/r14-cert.yaml
+function run_ceremonies() {
+    ./ceremonies/2015/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
+    ./ceremonies/2000/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
+    ./ceremonies/2020/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
+    ./ceremonies/2021/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
+    ./ceremonies/2023/run.sh "${_CEREMONY_BIN}" "${RAMDISK_DIR}"
 
+    _output_human_readable_text_files
+}
 
-# Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
-# -check_ss_sig means to verify the root certificate's self-signature.
+setup_ceremony_tools
+run_ceremonies
 
-## 1609459200 is Dec 31 2021; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2020/int-r3.cert.pem \
-    ${RAMDISK_DIR}/2020/int-r4.cert.pem
-
-openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2020/int-e1.cert.pem \
-    ${RAMDISK_DIR}/2020/int-e2.cert.pem
-
-## 1611300000 is Jan 22 2021; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1611300000 -CAfile ${RAMDISK_DIR}/2000/root-dst.cert.pem \
-    ${RAMDISK_DIR}/2021/root-x1-cross.cert.pem
-
-## 1704067201 is Dec 31 2024; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2023/int-e5-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e6-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e8-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e9-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r10.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r11.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r12.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r13.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r14.cert.pem
-
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2023/int-e5.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e6.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e8.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e9.cert.pem
-
-
-# Generate human-readable text files from all of ceremony output files.
-for x in $(find -L ${RAMDISK_DIR} -type f -name '*.cert.pem'); do
-    openssl x509 -text -noout -out "${x%.*}.txt" -in "${x}" &
-done
-
-for r in $(find -L ${RAMDISK_DIR} -type f -name '*.cross-csr.pem'); do
-    openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}" &
-done
-
-for c in $(find -L ${RAMDISK_DIR} -type f -name '*.crl.pem'); do
-    openssl crl -text -noout -out "${c%.*}.txt" -in "${c}" &
-done
-
-wait
+echo "All done!"
