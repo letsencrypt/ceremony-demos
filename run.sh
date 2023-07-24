@@ -44,6 +44,7 @@ function setup_ceremony_tools() {
         # Build ceremony from main and store it
         cd "${TMPDIR}/boulder"
         make
+        cd -
     else
         echo "Found executable ceremony tool built for the 2023 ceremony"
     fi
@@ -56,6 +57,7 @@ function setup_ceremony_tools() {
         cd "${TMPDIR}/boulder"
         git checkout 7d66d67054616867121e822fdc8ae58b10c1d71a
         make
+        cd -
         cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/PRE_2023/"
     else
         echo "Found executable ceremony tool built for ceremonies prior to 2023"
