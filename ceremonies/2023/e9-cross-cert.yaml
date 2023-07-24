@@ -1,4 +1,4 @@
-ceremony-type: intermediate
+ceremony-type: cross-certificate
 pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
@@ -7,6 +7,7 @@ pkcs11:
 inputs:
   issuer-certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
   public-key-path: /run/shm/ceremonies/2023/int-e9.key.pem
+  certificate-to-cross-sign-path: /run/shm/ceremonies/2023/int-e9.cert.pem
 outputs:
   certificate-path: /run/shm/ceremonies/2023/int-e9-cross.cert.pem
 certificate-profile:
@@ -24,3 +25,9 @@ certificate-profile:
   issuer-url: http://x1.i.lencr.org/
   policies:
     - oid: 2.23.140.1.2.1
+skip-lints:
+  # The extKeyUsage extension is required for intermediate certificates, but is
+  # optional for cross-signed certs which share a Subject DN and Public Key with
+  # a Root Certificate (BRs 7.1.2.2.g). This cert is a cross-sign.
+  - n_mp_allowed_eku
+  - n_sub_ca_eku_missing

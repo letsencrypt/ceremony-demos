@@ -7,6 +7,7 @@ pkcs11:
 inputs:
   issuer-certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
   public-key-path: /run/shm/ceremonies/2023/int-e5.key.pem
+  certificate-to-cross-sign-path: /run/shm/ceremonies/2023/int-e5.cert.pem
 outputs:
   certificate-path: /run/shm/ceremonies/2023/int-e5-cross.cert.pem
 certificate-profile:
