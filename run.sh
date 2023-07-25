@@ -45,10 +45,9 @@ function setup_ceremony_tools() {
         cd "${TMPDIR}/boulder"
         make
         cd -
-    else
-        if [ -z "${_CEREMONY_BIN}" ]; then
-            export _CEREMONY_BIN="${TMPDIR}/boulder/bin/ceremony"
-        fi
+    fi
+    if [ -z "${_CEREMONY_BIN}" ]; then
+        export _CEREMONY_BIN="${TMPDIR}/boulder/bin/ceremony"
     fi
     echo "Found executable ceremony tool built for the 2023 ceremony at ${_CEREMONY_BIN}"
 
@@ -62,10 +61,9 @@ function setup_ceremony_tools() {
         make
         cd -
         cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/PRE_2023/"
-    else
-        if [ -z "${_CEREMONY_BIN_HISTORIC}" ]; then
+    fi
+    if [ -z "${_CEREMONY_BIN_HISTORIC}" ]; then
             export _CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
-        fi
     fi
     echo "Found executable ceremony tool built for ceremonies prior to 2023 at ${_CEREMONY_BIN_HISTORIC}"
 
