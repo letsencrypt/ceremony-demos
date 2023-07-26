@@ -77,7 +77,8 @@ function _output_human_readable_text_files() {
     done
 
     for r in $(find -L ${RAMDISK_DIR} -type f -name '*.cross-csr.pem'); do
-        openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}" &
+        echo -n "${r} "
+        openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}"
     done
 
     for c in $(find -L ${RAMDISK_DIR} -type f -name '*.crl.pem'); do
