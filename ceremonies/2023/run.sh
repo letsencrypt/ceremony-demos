@@ -35,7 +35,6 @@ echo "Running ceremony: ${CEREMONY_YEAR}"
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
 cd ${CEREMONY_DIR}
 
-
 "${CEREMONY_BIN}" --config "./e5-key.yaml"
 "${CEREMONY_BIN}" --config "./e6-key.yaml"
 "${CEREMONY_BIN}" --config "./e7-key.yaml"
