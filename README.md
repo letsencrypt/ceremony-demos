@@ -1,4 +1,4 @@
-# Let's Encrypt 2023 Ceremony
+# Let's Encrypt Key Ceremony Demos
 
 Let's Encrypt plans to generate new intermediates (both RSA 2048 and ECDSA P-384) in 2023, to complement the cohort of existing intermediates (R3, R4, E1, and E2) already present in our [hierarchy](https://letsencrypt.org/certificates/).
 
