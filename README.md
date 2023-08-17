@@ -27,3 +27,10 @@ To try it out:
   ```sh
   ./reset.sh && ./run.sh
   ```
+
+- If you're working on a specific branch of boulder making changes to the `ceremony` tool and need to test an uncoming ceremony:
+
+  ```sh
+  export _CEREMONY_BIN=/path/to/active/development/boulder/bin/ceremony
+  ./run.sh
+  ```
