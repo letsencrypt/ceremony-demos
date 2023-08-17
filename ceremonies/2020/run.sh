@@ -57,10 +57,10 @@ cd ${CEREMONY_DIR}
 # -check_ss_sig means to verify the root certificate's self-signature.
 
 ## 1609459200 is Dec 31 2021; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2020/int-r3.cert.pem \
-    ${RAMDISK_DIR}/2020/int-r4.cert.pem
+openssl verify -check_ss_sig -attime 1609459200 -CAfile "${RAMDISK_DIR}/2015/root-x1.cert.pem" -purpose sslserver \
+    "${RAMDISK_DIR}/2020/int-r3.cert.pem" \
+    "${RAMDISK_DIR}/2020/int-r4.cert.pem"
 
-openssl verify -check_ss_sig -attime 1609459200 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2020/int-e1.cert.pem \
-    ${RAMDISK_DIR}/2020/int-e2.cert.pem
+openssl verify -check_ss_sig -attime 1609459200 -CAfile "${RAMDISK_DIR}/2020/root-x2.cert.pem" -purpose sslserver \
+    "${RAMDISK_DIR}/2020/int-e1.cert.pem" \
+    "${RAMDISK_DIR}/2020/int-e2.cert.pem"

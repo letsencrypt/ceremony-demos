@@ -33,7 +33,7 @@ CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
 echo "Running ceremony: ${CEREMONY_YEAR}"
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
-cd ${CEREMONY_DIR}
+cd "${CEREMONY_DIR}"
 
 "${CEREMONY_BIN}" --config "./root-x1-cross-cert.yaml"
 
@@ -42,5 +42,4 @@ cd ${CEREMONY_DIR}
 
 ## 1611300000 is Jan 22 2021; this is necessary because we're testing with NotBefore in the future.
 openssl verify -check_ss_sig -attime 1611300000 -CAfile ${RAMDISK_DIR}/2000/root-dst.cert.pem \
-    ${RAMDISK_DIR}/2021/root-x1-cross.cert.pem
-
+    "${RAMDISK_DIR}/2021/root-x1-cross.cert.pem"

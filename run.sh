@@ -89,11 +89,11 @@ function _output_human_readable_text_files() {
 }
 
 function run_ceremonies() {
-    ./ceremonies/2015/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
-    ./ceremonies/2000/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
-    ./ceremonies/2020/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
-    ./ceremonies/2021/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}"
-    ./ceremonies/2023/run.sh "${_CEREMONY_BIN}" "${RAMDISK_DIR}"
+    ./ceremonies/2015/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
+    ./ceremonies/2000/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
+    ./ceremonies/2020/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
+    ./ceremonies/2021/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
+    ./ceremonies/2023/run.sh "${_CEREMONY_BIN}" "${RAMDISK_DIR}" || return 1
 
     _output_human_readable_text_files
 }
@@ -101,4 +101,10 @@ function run_ceremonies() {
 setup_ceremony_tools
 run_ceremonies
 
-echo "All done!"
+RETVAL=$?
+if [ "${RETVAL}" -eq 0 ]; then
+    echo "All done!"
+else
+    echo "Exited early due to error"
+    exit "${RETVAL}"
+fi

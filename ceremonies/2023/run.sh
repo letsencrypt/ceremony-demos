@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+set -o pipefail
+
 function usage() {
     echo -e "Usage:
 
@@ -33,13 +35,14 @@ CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
 echo "Running ceremony: ${CEREMONY_YEAR}"
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
-cd ${CEREMONY_DIR}
+cd "${CEREMONY_DIR}"
 
 "${CEREMONY_BIN}" --config "./e5-key.yaml"
 "${CEREMONY_BIN}" --config "./e6-key.yaml"
 "${CEREMONY_BIN}" --config "./e7-key.yaml"
 "${CEREMONY_BIN}" --config "./e8-key.yaml"
 "${CEREMONY_BIN}" --config "./e9-key.yaml"
+"${CEREMONY_BIN}" --config "./i1-key.yaml"
 "${CEREMONY_BIN}" --config "./r10-key.yaml"
 "${CEREMONY_BIN}" --config "./r11-key.yaml"
 "${CEREMONY_BIN}" --config "./r12-key.yaml"
@@ -51,6 +54,7 @@ cd ${CEREMONY_DIR}
 "${CEREMONY_BIN}" --config "./e7-cert.yaml"
 "${CEREMONY_BIN}" --config "./e8-cert.yaml"
 "${CEREMONY_BIN}" --config "./e9-cert.yaml"
+"${CEREMONY_BIN}" --config "./i1-cert.yaml"
 "${CEREMONY_BIN}" --config "./r10-cert.yaml"
 "${CEREMONY_BIN}" --config "./r11-cert.yaml"
 "${CEREMONY_BIN}" --config "./r12-cert.yaml"
@@ -67,21 +71,31 @@ cd ${CEREMONY_DIR}
 # -check_ss_sig means to verify the root certificate's self-signature.
 
 ## 1704067201 is Dec 31 2024; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2015/root-x1.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2023/int-e5-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e6-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e8-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e9-cross.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r10.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r11.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r12.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r13.cert.pem \
-    ${RAMDISK_DIR}/2023/int-r14.cert.pem
+openssl verify -check_ss_sig -attime 1704067201 -CAfile "${RAMDISK_DIR}/2015/root-x1.cert.pem" -purpose sslserver \
+    "${RAMDISK_DIR}/2023/int-e5-cross.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e6-cross.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e7-cross.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e8-cross.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e9-cross.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-r10.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-r11.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-r12.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-r13.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-r14.cert.pem"
 
-openssl verify -check_ss_sig -attime 1704067201 -CAfile ${RAMDISK_DIR}/2020/root-x2.cert.pem -purpose sslserver \
-    ${RAMDISK_DIR}/2023/int-e5.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e6.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e7.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e8.cert.pem \
-    ${RAMDISK_DIR}/2023/int-e9.cert.pem
+openssl verify -check_ss_sig -attime 1704067201 -CAfile "${RAMDISK_DIR}/2020/root-x2.cert.pem" -purpose sslserver \
+    "${RAMDISK_DIR}/2023/int-e5.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e6.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e7.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e8.cert.pem" \
+    "${RAMDISK_DIR}/2023/int-e9.cert.pem"
+
+## 1695168000 is Sept 26, 2023
+openssl verify -check_ss_sig -attime 1695686400 -CAfile "${RAMDISK_DIR}/2020/root-x2.cert.pem" -purpose sslserver \
+    "${RAMDISK_DIR}/2023/int-i1.cert.pem"
+
+# Intermediate I1 is to be revoked after issuance and never used. It's purpose is to
+# give us operational experience revoking an intermediate. In production we'll need to
+# update a CRL.
+"${CEREMONY_BIN}" --config "./i1-cert.crl.yaml"
+openssl crl -inform PEM -in "${RAMDISK_DIR}/2023/int-i1.crl.pem" -noout -crlnumber | grep -q crlNumber=0x6F || echo "Did not find expected CRL version"

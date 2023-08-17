@@ -33,6 +33,6 @@ CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
 echo "Running ceremony: ${CEREMONY_YEAR}"
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
-cd ${CEREMONY_DIR}
+cd "${CEREMONY_DIR}"
 
 "${CEREMONY_BIN}" --config "./root-dst.yaml"
