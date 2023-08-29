@@ -1,0 +1,33 @@
+ceremony-type: cross-certificate
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-x1
+inputs:
+  issuer-certificate-path: ../2015/root-x1.cert.pem
+  public-key-path: ./int-e8.key.pem
+  certificate-to-cross-sign-path: ./int-e8.cert.pem
+outputs:
+  certificate-path: ./int-e8-cross.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) E8
+  organization: (FAKE) Let's Encrypt
+  country: US
+  not-before: 2023-09-25 00:00:00
+  not-after: 2026-09-24 23:59:59
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+      - Digital Signature
+  crl-url: http://x1.c.lencr.org/
+  issuer-url: http://x1.i.lencr.org/
+  policies:
+    - oid: 2.23.140.1.2.1
+skip-lints:
+  # The extKeyUsage extension is required for intermediate certificates, but is
+  # optional for cross-signed certs which share a Subject DN and Public Key with
+  # a Root Certificate (BRs 7.1.2.2.g). This cert is a cross-sign.
+  - n_mp_allowed_eku
+  - n_sub_ca_eku_missing
