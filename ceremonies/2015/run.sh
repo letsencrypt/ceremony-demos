@@ -3,7 +3,7 @@
 function usage() {
     echo -e "Usage:
 
-    ./$(basename "${0}") /path/to/ceremony-binary /path/to/key-material
+    ./$(basename "${0}") /path/to/ceremony-binary
     "
 }
 
@@ -12,7 +12,7 @@ if [ "${1}" == "-h" ]; then
     exit 0
 fi
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 1 ]; then
     usage
     exit 1
 fi
