@@ -1,7 +1,4 @@
 softhsm2.conf
 softhsm/
-*.txt
-*.pem
-
-# This symlinked directory gets created by ./run.sh
-ceremony-output
+ceremonies/**/*.txt
+ceremonies/**/*.pem
