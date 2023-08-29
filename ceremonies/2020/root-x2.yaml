@@ -11,8 +11,8 @@ key:
   type: ecdsa
   ecdsa-curve: P-384
 outputs:
-  public-key-path: /run/shm/ceremonies/2020/root-x2.key.pem
-  certificate-path: /run/shm/ceremonies/2020/root-x2.cert.pem
+  public-key-path: ./root-x2.key.pem
+  certificate-path: ./root-x2.cert.pem
 certificate-profile:
   signature-algorithm: ECDSAWithSHA384
   # Must match x2-signed-by-x1.yaml

@@ -8,4 +8,4 @@ key:
   type: ecdsa
   ecdsa-curve: P-384
 outputs:
-  public-key-path: /run/shm/ceremonies/2020/int-e2.key.pem
+  public-key-path: ./int-e2.key.pem

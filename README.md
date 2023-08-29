@@ -1,9 +1,10 @@
 # Let's Encrypt Key Ceremony Demos
 
-Let's Encrypt plans to generate new intermediates (both RSA 2048 and ECDSA P-384) in 2023, to complement the cohort of existing intermediates (R3, R4, E1, and E2) already present in our [hierarchy](https://letsencrypt.org/certificates/).
-
-This directory contains example config files that simulated the certificate
-profiles in detail. We are using it to gather feedback prior to our key ceremony.
+This directory contains example config files that simulate certificate profiles
+used by Let's Encrypt for various key ceremonies in detail. The primary goal is
+to gather feedback prior to upcoming key ceremonies. The repository will also
+serve as a historical marker of past ceremonies detailing the evolution of the
+[Let's Encrypt chain of trust](https://letsencrypt.org/certificates/).
 
 To try it out:
 
@@ -22,8 +23,7 @@ To try it out:
 - Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
   install.
 
-- Execute the demo ceremony. Output files are available in the `ceremony-output` symlink pointing to `/run/shm/ceremonies/`. If your OS distribution doesn't have access to [tmpfs facilities](https://man7.org/linux/man-pages/man5/tmpfs.5.html), use a virtual machine or container that can provide a tmpfs.
-
+- Execute the demo ceremony.
   ```sh
   ./reset.sh && ./run.sh
   ```

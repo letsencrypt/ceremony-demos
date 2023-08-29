@@ -23,12 +23,6 @@ if [ ! -x "${CEREMONY_BIN}" ]; then
     exit 1
 fi
 
-RAMDISK_DIR="${2}"
-if [ ! -d "${RAMDISK_DIR}" ]; then
-    echo "${RAMDISK_DIR} does not exist. Exiting..."
-    exit 1
-fi
-
 CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
 echo "Running ceremony: ${CEREMONY_YEAR}"
 

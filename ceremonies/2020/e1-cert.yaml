@@ -5,10 +5,10 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: root-x2
 inputs:
-  issuer-certificate-path: /run/shm/ceremonies/2020/root-x2.cert.pem
-  public-key-path: /run/shm/ceremonies/2020/int-e1.key.pem
+  issuer-certificate-path: ./root-x2.cert.pem
+  public-key-path: ./int-e1.key.pem
 outputs:
-  certificate-path: /run/shm/ceremonies/2020/int-e1.cert.pem
+  certificate-path: ./int-e1.cert.pem
 certificate-profile:
   signature-algorithm: ECDSAWithSHA384
   common-name: (FAKE) E1

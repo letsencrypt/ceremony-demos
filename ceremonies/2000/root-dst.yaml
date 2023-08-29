@@ -8,8 +8,8 @@ key:
   type: rsa
   rsa-mod-length: 2048
 outputs:
-  public-key-path: /run/shm/ceremonies/2000/root-dst.key.pem
-  certificate-path: /run/shm/ceremonies/2000/root-dst.cert.pem
+  public-key-path: ./root-dst.key.pem
+  certificate-path: ./root-dst.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) DST Root CA X3

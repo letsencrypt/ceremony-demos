@@ -5,9 +5,9 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: root-x1
 inputs:
-  public-key-path: /run/shm/ceremonies/2015/root-x1.key.pem
+  public-key-path: ../2015/root-x1.key.pem
 outputs:
-  csr-path: /run/shm/ceremonies/2021/root-x1-cross.csr.pem
+  csr-path: ../2021/root-x1-cross.csr.pem
 certificate-profile:
   common-name: (FAKE) ISRG Root X1
   organization: (FAKE) Internet Security Research Group

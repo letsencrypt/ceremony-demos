@@ -5,9 +5,9 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: root-x2
 inputs:
-  issuer-certificate-path: /run/shm/ceremonies/2020/root-x2.cert.pem
+  issuer-certificate-path: ./root-x2.cert.pem
 outputs:
-  crl-path: /run/shm/ceremonies/2020/root-x2.crl.pem
+  crl-path: ./root-x2.crl.pem
 crl-profile:
   this-update: 2020-09-04 00:00:00
   next-update: 2021-08-04 00:00:00

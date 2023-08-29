@@ -5,9 +5,9 @@ pkcs11:
   signing-key-slot: 732394342
   signing-key-label: int-r3
 inputs:
-  public-key-path: /run/shm/ceremonies/2020/int-r3.key.pem
+  public-key-path: ./int-r3.key.pem
 outputs:
-  csr-path: /run/shm/ceremonies/2020/int-r3.cross-csr.pem
+  csr-path: ./int-r3.cross-csr.pem
 certificate-profile:
   common-name: (FAKE) R3
   organization: (FAKE) Let's Encrypt

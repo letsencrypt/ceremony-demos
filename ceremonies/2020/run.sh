@@ -3,7 +3,7 @@
 function usage() {
     echo -e "Usage:
 
-    ./$(basename "${0}") /path/to/ceremony-binary /path/to/key-material
+    ./$(basename "${0}") /path/to/ceremony-binary
     "
 }
 
@@ -12,7 +12,7 @@ if [ "${1}" == "-h" ]; then
     exit 0
 fi
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 1 ]; then
     usage
     exit 1
 fi
@@ -20,12 +20,6 @@ fi
 CEREMONY_BIN="${1}"
 if [ ! -x "${CEREMONY_BIN}" ]; then
     echo "${CEREMONY_BIN} is not executable. Exiting..."
-    exit 1
-fi
-
-RAMDISK_DIR="${2}"
-if [ ! -d "${RAMDISK_DIR}" ]; then
-    echo "${RAMDISK_DIR} does not exist. Exiting..."
     exit 1
 fi
 
@@ -57,10 +51,10 @@ cd ${CEREMONY_DIR}
 # -check_ss_sig means to verify the root certificate's self-signature.
 
 ## 1609459200 is Dec 31 2021; this is necessary because we're testing with NotBefore in the future.
-openssl verify -check_ss_sig -attime 1609459200 -CAfile "${RAMDISK_DIR}/2015/root-x1.cert.pem" -purpose sslserver \
-    "${RAMDISK_DIR}/2020/int-r3.cert.pem" \
-    "${RAMDISK_DIR}/2020/int-r4.cert.pem"
+openssl verify -check_ss_sig -attime 1609459200 -CAfile "../2015/root-x1.cert.pem" -purpose sslserver \
+    "./int-r3.cert.pem" \
+    "./int-r4.cert.pem"
 
-openssl verify -check_ss_sig -attime 1609459200 -CAfile "${RAMDISK_DIR}/2020/root-x2.cert.pem" -purpose sslserver \
-    "${RAMDISK_DIR}/2020/int-e1.cert.pem" \
-    "${RAMDISK_DIR}/2020/int-e2.cert.pem"
+openssl verify -check_ss_sig -attime 1609459200 -CAfile "./root-x2.cert.pem" -purpose sslserver \
+    "./int-e1.cert.pem" \
+    "./int-e2.cert.pem"

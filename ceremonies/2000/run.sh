@@ -3,7 +3,7 @@
 function usage() {
     echo -e "Usage:
 
-    ./$(basename "${0}") /path/to/ceremony-binary /path/to/key-material
+    ./$(basename "${0}") /path/to/ceremony-binary
     "
 }
 
@@ -12,7 +12,7 @@ if [ "${1}" == "-h" ]; then
     exit 0
 fi
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 1 ]; then
     usage
     exit 1
 fi
@@ -20,12 +20,6 @@ fi
 CEREMONY_BIN="${1}"
 if [ ! -x "${CEREMONY_BIN}" ]; then
     echo "${CEREMONY_BIN} is not executable. Exiting..."
-    exit 1
-fi
-
-RAMDISK_DIR="${2}"
-if [ ! -d "${RAMDISK_DIR}" ]; then
-    echo "${RAMDISK_DIR} does not exist. Exiting..."
     exit 1
 fi
 

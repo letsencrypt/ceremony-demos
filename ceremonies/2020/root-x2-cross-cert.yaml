@@ -5,10 +5,10 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: root-x1
 inputs:
-  issuer-certificate-path: /run/shm/ceremonies/2015/root-x1.cert.pem
-  public-key-path: /run/shm/ceremonies/2020/root-x2.key.pem
+  issuer-certificate-path: ../2015/root-x1.cert.pem
+  public-key-path: ./root-x2.key.pem
 outputs:
-  certificate-path: /run/shm/ceremonies/2020/root-x2-cross.cert.pem
+  certificate-path: ./root-x2-cross.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) ISRG Root X2

@@ -5,10 +5,10 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: root-dst
 inputs:
-  issuer-certificate-path: /run/shm/ceremonies/2000/root-dst.cert.pem
-  public-key-path: /run/shm/ceremonies/2020/int-r3.key.pem
+  issuer-certificate-path: ../2000/root-dst.cert.pem
+  public-key-path: ./int-r3.key.pem
 outputs:
-  certificate-path: /run/shm/ceremonies/2020/int-r3-cross.cert.pem
+  certificate-path: ./int-r3-cross.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) R3

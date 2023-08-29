@@ -23,16 +23,6 @@ fi
 export SOFTHSM2_CONF="${PWD}/softhsm2.conf"
 echo "directories.tokendir = ${PWD}/softhsm/" > ${SOFTHSM2_CONF}
 
-# Store the output in a ramdisk so we don't chew up my disk endlessly running this tooling.
-RAMDISK_DIR="/run/shm/ceremonies"
-mkdir -p "${RAMDISK_DIR}"
-for ceremonyYear in $(find ./ceremonies/ -maxdepth 1 -type d -printf '%P '); do
-    mkdir -p "${RAMDISK_DIR}/${ceremonyYear}"
-done
-if [ ! -L "ceremony-output" ]; then
-    ln -s "${RAMDISK_DIR}/" ceremony-output
-fi
-
 function setup_ceremony_tools() {
     TMPDIR="/tmp/ceremony-tools"
     mkdir -p "${TMPDIR}/bin/PRE_2023/"
@@ -66,22 +56,19 @@ function setup_ceremony_tools() {
             export _CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
     fi
     echo "Found executable ceremony tool built for ceremonies prior to 2023 at ${_CEREMONY_BIN_HISTORIC}"
-
-
 }
 
 function _output_human_readable_text_files() {
     # Generate human-readable text files from all of ceremony output files.
-    for x in $(find -L ${RAMDISK_DIR} -type f -name '*.cert.pem'); do
+    for x in $(find ./ceremonies/ -type f -name '*.cert.pem'); do
         openssl x509 -text -noout -out "${x%.*}.txt" -in "${x}" &
     done
 
-    for r in $(find -L ${RAMDISK_DIR} -type f -name '*.cross-csr.pem'); do
-        echo -n "${r} "
+    for r in $(find ./ceremonies/ -type f -name '*.cross-csr.pem'); do
         openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}"
     done
 
-    for c in $(find -L ${RAMDISK_DIR} -type f -name '*.crl.pem'); do
+    for c in $(find ./ceremonies -type f -name '*.crl.pem'); do
         openssl crl -text -noout -out "${c%.*}.txt" -in "${c}" &
     done
 
@@ -89,11 +76,10 @@ function _output_human_readable_text_files() {
 }
 
 function run_ceremonies() {
-    ./ceremonies/2015/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
-    ./ceremonies/2000/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
-    ./ceremonies/2020/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
-    ./ceremonies/2021/run.sh "${_CEREMONY_BIN_HISTORIC}" "${RAMDISK_DIR}" || return 1
-    ./ceremonies/2023/run.sh "${_CEREMONY_BIN}" "${RAMDISK_DIR}" || return 1
+    ./ceremonies/2015/run.sh "${_CEREMONY_BIN_HISTORIC}" || return 1
+    ./ceremonies/2000/run.sh "${_CEREMONY_BIN_HISTORIC}" || return 1
+    ./ceremonies/2020/run.sh "${_CEREMONY_BIN_HISTORIC}" || return 1
+    ./ceremonies/2021/run.sh "${_CEREMONY_BIN_HISTORIC}" || return 1
 
     _output_human_readable_text_files
 }

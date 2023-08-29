@@ -8,4 +8,5 @@ key:
   type: rsa
   rsa-mod-length: 2048
 outputs:
-  public-key-path: /run/shm/ceremonies/2020/int-r3.key.pem
+  public-key-path: ./int-r3.key.pem
+  
