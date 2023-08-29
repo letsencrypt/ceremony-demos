@@ -3,7 +3,7 @@
 function usage() {
     echo -e "Usage:
 
-    ./$(basename "${0}") /path/to/ceremony-binary
+    ./$(basename "${0}")
     "
 }
 
@@ -12,40 +12,67 @@ if [ "${1}" == "-h" ]; then
     exit 0
 fi
 
-if [ "$#" -ne 1 ]; then
-    usage
-    exit 1
-fi
+function _echo() {
+    echo "$(date +'%Y/%m/%d %H:%M:%S') ${@}"
+}
 
-CEREMONY_BIN="${1}"
-if [ ! -x "${CEREMONY_BIN}" ]; then
-    echo "${CEREMONY_BIN} is not executable. Exiting..."
+function setup_ceremony_tool() {
+    TMPDIR="/tmp/ceremony-tools"
+    
+    if [ -z "${_CEREMONY_BIN_HISTORIC}" ]; then
+        export _CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
+    else
+        if [ -x "${_CEREMONY_BIN_HISTORIC}" ]; then
+            return 0
+        fi
+    fi
+    
+    mkdir -p "${TMPDIR}/bin/PRE_2023/"
+    if [ ! -d "${TMPDIR}/boulder" ]; then
+        git clone https://github.com/letsencrypt/boulder/ "${TMPDIR}/boulder"
+    fi
+
+    if [ ! -x "${TMPDIR}/bin/PRE_2023/ceremony" ]; then
+        # Build ceremony on the commit prior to removing configuration of Policy OIDs.
+        # This will allow all ceremonies prior to 2023 to complete successfully without
+        # requiring backporting changes to those ceremonies and losing the historical
+        # representation of the ceremony.
+        cd "${TMPDIR}/boulder"
+        git checkout 7d66d67054616867121e822fdc8ae58b10c1d71a
+        make
+        cd -
+        cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/PRE_2023/"
+    fi
+}
+
+setup_ceremony_tool
+if [ $? -ne 0 ]; then
     exit 1
 fi
 
 CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
-echo "Running ceremony: ${CEREMONY_YEAR}"
+_echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${_CEREMONY_BIN_HISTORIC}"
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
-cd ${CEREMONY_DIR}
+cd "${CEREMONY_DIR}"
 
-"${CEREMONY_BIN}" --config "./root-x2.yaml"
-"${CEREMONY_BIN}" --config "./root-x2-cross-cert.yaml"
-"${CEREMONY_BIN}" --config "./root-x1.crl.yaml"
-"${CEREMONY_BIN}" --config "./root-x2.crl.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./root-x2.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./root-x2-cross-cert.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./root-x1.crl.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./root-x2.crl.yaml"
 
-"${CEREMONY_BIN}" --config "./e1-key.yaml"
-"${CEREMONY_BIN}" --config "./e2-key.yaml"
-"${CEREMONY_BIN}" --config "./r3-key.yaml"
-"${CEREMONY_BIN}" --config "./r4-key.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./e1-key.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./e2-key.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./r3-key.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./r4-key.yaml"
 
-"${CEREMONY_BIN}" --config "./e1-cert.yaml"
-"${CEREMONY_BIN}" --config "./e2-cert.yaml"
-"${CEREMONY_BIN}" --config "./r3-cert.yaml"
-"${CEREMONY_BIN}" --config "./r4-cert.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./e1-cert.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./e2-cert.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./r3-cert.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./r4-cert.yaml"
 
-"${CEREMONY_BIN}" --config "./r3-cross-csr.yaml"
-"${CEREMONY_BIN}" --config "./r4-cross-csr.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./r3-cross-csr.yaml"
+"${_CEREMONY_BIN_HISTORIC}" --config "./r4-cross-csr.yaml"
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.

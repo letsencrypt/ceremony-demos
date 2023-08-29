@@ -8,7 +8,7 @@ inputs:
   issuer-certificate-path: ../2000/root-dst.cert.pem
   public-key-path: ../2015/root-x1.key.pem
 outputs:
-  certificate-path: ../2021/root-x1-cross.cert.pem
+  certificate-path: ./root-x1-cross.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) ISRG Root X1
