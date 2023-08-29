@@ -18,7 +18,7 @@ certificate-profile:
   not-before: 2000-09-30 21:12:19
   # Set expiry to be earlier than it actually is, to simulate the near
   # future when the real DST Root CA X3 expires.
-  not-after: 2021-01-30 14:01:15
+  not-after: 2021-09-30 14:01:15
   key-usages:
       - Cert Sign
       - CRL Sign
