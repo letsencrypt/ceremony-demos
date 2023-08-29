@@ -65,7 +65,7 @@ function _output_human_readable_text_files() {
     done
 
     for r in $(find ./ceremonies/ -type f -name '*.cross-csr.pem'); do
-        openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}"
+        openssl req -text -noout -verify -out "${r%.*}.txt" -in "${r}" &
     done
 
     for c in $(find ./ceremonies -type f -name '*.crl.pem'); do
