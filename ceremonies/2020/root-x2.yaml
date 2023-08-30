@@ -1,6 +1,3 @@
-# Note: This doesn't simulate any part of the upcoming ceremony,
-# it just creates a fake version of our existing "ISRG Root X2"
-# so we can simulate signing intermediates from it.
 ceremony-type: root
 pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so

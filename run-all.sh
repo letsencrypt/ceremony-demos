@@ -42,21 +42,14 @@ function output_human_readable_text_files() {
 }
 
 function run_ceremonies() {
-    ./ceremonies/2015/run.sh || return 1
-    ./ceremonies/2000/run.sh || return 1
-    ./ceremonies/2020/run.sh || return 1
-    ./ceremonies/2021/run.sh || return 1
-    ./ceremonies/2023/run.sh || return 1
+    ./ceremonies/2015/run.sh
+    ./ceremonies/2000/run.sh
+    ./ceremonies/2020/run.sh
+    ./ceremonies/2021/run.sh
+    ./ceremonies/2023/run.sh
 }
 
 setup_softhsm2
 run_ceremonies
 output_human_readable_text_files
-
-RETVAL=$?
-if [ "${RETVAL}" -eq 0 ]; then
-    echo "All done!"
-else
-    echo "Exited early due to error"
-    exit "${RETVAL}"
-fi
+echo "All done!"
