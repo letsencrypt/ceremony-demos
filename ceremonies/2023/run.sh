@@ -119,5 +119,5 @@ openssl verify -check_ss_sig -attime 1695686400 -CAfile "../2020/root-x2.cert.pe
 # Intermediate I1 is to be revoked after issuance and never used. It's purpose is to
 # give us operational experience revoking an intermediate. In production we'll need to
 # update a CRL.
-"${_CEREMONY_BIN}" --config "./i1-cert.crl.yaml"
-openssl crl -inform PEM -in "./int-i1.crl.pem" -noout -crlnumber | grep -q crlNumber=0x6F || echo "Did not find expected CRL version"
+"${_CEREMONY_BIN}" --config "./root-x2.crl.yaml"
+openssl crl -inform PEM -in "./root-x2.crl.pem" -noout -crlnumber | grep -q crlNumber=0x6F || echo "Did not find expected CRL version"

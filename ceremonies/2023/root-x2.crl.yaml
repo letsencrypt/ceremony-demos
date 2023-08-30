@@ -7,11 +7,11 @@ pkcs11:
 inputs:
   issuer-certificate-path: ../2020/root-x2.cert.pem
 outputs:
-  crl-path: ./int-i1.crl.pem
+  crl-path: ./root-x2.crl.pem
 crl-profile:
   this-update: 2023-09-25 00:00:00
   next-update: 2024-08-04 00:00:00
-  number: 111
+  number: 111 # This number must be greater than the current CRL number when the ceremony is actually conducted.
   revoked-certificates:
     - certificate-path: ./int-i1.cert.pem
       revocation-date: 2023-09-25 00:00:00
