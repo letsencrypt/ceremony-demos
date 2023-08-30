@@ -19,10 +19,10 @@ function _echo() {
 function setup_ceremony_tool() {
     TMPDIR="/tmp/ceremony-tools"
     
-    if [ -z "${_CEREMONY_BIN_HISTORIC}" ]; then
-        export _CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
+    if [ -z "${CEREMONY_BIN_HISTORIC}" ]; then
+        export CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
     else
-        if [ -x "${_CEREMONY_BIN_HISTORIC}" ]; then
+        if [ -x "${CEREMONY_BIN_HISTORIC}" ]; then
             return 0
         fi
     fi
@@ -51,28 +51,28 @@ if [ $? -ne 0 ]; then
 fi
 
 CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
-_echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${_CEREMONY_BIN_HISTORIC}"
+_echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_BIN_HISTORIC}"
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
 cd "${CEREMONY_DIR}"
 
-"${_CEREMONY_BIN_HISTORIC}" --config "./root-x2.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./root-x2-cross-cert.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./root-x1.crl.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./root-x2.crl.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./root-x2.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./root-x2-cross-cert.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./root-x1.crl.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./root-x2.crl.yaml"
 
-"${_CEREMONY_BIN_HISTORIC}" --config "./e1-key.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./e2-key.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./r3-key.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./r4-key.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./e1-key.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./e2-key.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./r3-key.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./r4-key.yaml"
 
-"${_CEREMONY_BIN_HISTORIC}" --config "./e1-cert.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./e2-cert.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./r3-cert.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./r4-cert.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./e1-cert.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./e2-cert.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./r3-cert.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./r4-cert.yaml"
 
-"${_CEREMONY_BIN_HISTORIC}" --config "./r3-cross-csr.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./r4-cross-csr.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./r3-cross-csr.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./r4-cross-csr.yaml"
 
 # Verify the root -> intermediate signatures, plus the TLS Server Auth EKU.
 # -check_ss_sig means to verify the root certificate's self-signature.

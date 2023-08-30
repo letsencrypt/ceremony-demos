@@ -19,10 +19,10 @@ function _echo() {
 function setup_ceremony_tool() {
     TMPDIR="/tmp/ceremony-tools"
     
-    if [ -z "${_CEREMONY_BIN_HISTORIC}" ]; then
-        export _CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
+    if [ -z "${CEREMONY_BIN_HISTORIC}" ]; then
+        export CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
     else
-        if [ -x "${_CEREMONY_BIN_HISTORIC}" ]; then
+        if [ -x "${CEREMONY_BIN_HISTORIC}" ]; then
             return 0
         fi
     fi
@@ -51,14 +51,14 @@ if [ $? -ne 0 ]; then
 fi
 
 CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
-_echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${_CEREMONY_BIN_HISTORIC}"
+_echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_BIN_HISTORIC}"
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
 cd "${CEREMONY_DIR}"
 
 
-"${_CEREMONY_BIN_HISTORIC}" --config "./root-x1-cross-cert.yaml"
-"${_CEREMONY_BIN_HISTORIC}" --config "./root-x1-cross-csr.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./root-x1-cross-cert.yaml"
+"${CEREMONY_BIN_HISTORIC}" --config "./root-x1-cross-csr.yaml"
 
 
 # Verify the root -> root signature
