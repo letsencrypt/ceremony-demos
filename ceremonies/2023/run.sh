@@ -24,6 +24,7 @@ function setup_ceremony_tool() {
     fi
 
     TMPDIR="/tmp/ceremony-tools"
+    export CEREMONY_BIN_2023="${TMPDIR}/bin/PRE_2023/ceremony"
     mkdir -p "${TMPDIR}/bin/2023/"
     if [ ! -d "${TMPDIR}/boulder" ]; then
         git clone https://github.com/letsencrypt/boulder/ "${TMPDIR}/boulder"

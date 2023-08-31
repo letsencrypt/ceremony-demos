@@ -24,4 +24,4 @@ certificate-profile:
   crl-url: http://x1.c.lencr.org/
   issuer-url: http://x1.i.lencr.org/
   policies:
-    - oid: 2.23.140.1.2.1s
+    - oid: 2.23.140.1.2.1
