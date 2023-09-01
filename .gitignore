@@ -1,2 +1,4 @@
 softhsm2.conf
 softhsm/
+ceremonies/**/*.txt
+ceremonies/**/*.pem

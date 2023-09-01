@@ -1,0 +1,14 @@
+ceremony-type: cross-csr
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 732394342
+  signing-key-label: int-r4
+inputs:
+  public-key-path: ./int-r4.key.pem
+outputs:
+  csr-path: ./int-r4.cross-csr.pem
+certificate-profile:
+  common-name: (FAKE) R4
+  organization: (FAKE) Let's Encrypt
+  country: US
