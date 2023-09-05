@@ -24,7 +24,7 @@ function setup_ceremony_tool() {
     fi
 
     TMPDIR="/tmp/ceremony-tools"
-    export CEREMONY_BIN_2023="${TMPDIR}/bin/PRE_2023/ceremony"
+    export CEREMONY_BIN_2023="${TMPDIR}/bin/2023/ceremony"
     mkdir -p "${TMPDIR}/bin/2023/"
     if [ ! -d "${TMPDIR}/boulder" ]; then
         git clone https://github.com/letsencrypt/boulder/ "${TMPDIR}/boulder"
@@ -57,7 +57,6 @@ cd "${CEREMONY_DIR}"
 "${CEREMONY_BIN}" --config "./e7-key.yaml"
 "${CEREMONY_BIN}" --config "./e8-key.yaml"
 "${CEREMONY_BIN}" --config "./e9-key.yaml"
-"${CEREMONY_BIN}" --config "./i1-key.yaml"
 "${CEREMONY_BIN}" --config "./r10-key.yaml"
 "${CEREMONY_BIN}" --config "./r11-key.yaml"
 "${CEREMONY_BIN}" --config "./r12-key.yaml"
@@ -69,7 +68,6 @@ cd "${CEREMONY_DIR}"
 "${CEREMONY_BIN}" --config "./e7-cert.yaml"
 "${CEREMONY_BIN}" --config "./e8-cert.yaml"
 "${CEREMONY_BIN}" --config "./e9-cert.yaml"
-"${CEREMONY_BIN}" --config "./i1-cert.yaml"
 "${CEREMONY_BIN}" --config "./r10-cert.yaml"
 "${CEREMONY_BIN}" --config "./r11-cert.yaml"
 "${CEREMONY_BIN}" --config "./r12-cert.yaml"
@@ -110,21 +108,3 @@ openssl verify \
     "./int-e7.cert.pem" \
     "./int-e8.cert.pem" \
     "./int-e9.cert.pem"
-
-## 1695168000 is Aug 30, 2023; this ensures the check will still pass even after root-x2 expires.
-openssl verify \
-    -check_ss_sig \
-    -attime 1695686400 \
-    -CAfile "../2020/root-x2.cert.pem" \
-    -purpose sslserver \
-    "./int-i1.cert.pem"
-
-# Intermediate I1 is to be revoked after issuance and never used. It's purpose is to
-# give us operational experience revoking an intermediate. In production we'll need to
-# update a CRL.
-"${CEREMONY_BIN}" --config "./root-x2.crl.yaml"
-openssl crl \
-    -inform PEM \
-    -in "./root-x2.crl.pem" \
-    -noout \
-    -crlnumber | grep -q crlNumber=0x6F || echo "Did not find expected CRL version"
