@@ -36,7 +36,8 @@ function setup_ceremony_tool() {
         # requiring backporting changes to those ceremonies and losing the historical
         # representation of the ceremony.
         cd "${TMPDIR}/boulder"
-        git checkout 72e01b337abccc9b849a3063666943489bcc573d
+        git checkout main
+        git pull
         make
         cd -
         cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/2023/"
@@ -81,7 +82,7 @@ cd "${CEREMONY_DIR}"
 "${CEREMONY_BIN}" --config "./e9-cross-cert.yaml"
 
 
-## 1704067201 is Dec 31, 2024; this ensures the check will still pass even after root-x1 and root-x2 expire.
+## 1704067201 is Dec 31, 2024
 openssl verify \
     -check_ss_sig \
     -attime 1704067201 \
