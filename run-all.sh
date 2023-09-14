@@ -46,6 +46,7 @@ function run_ceremonies() {
     ./ceremonies/2000/run.sh
     ./ceremonies/2020/run.sh
     ./ceremonies/2021/run.sh
+    ./ceremonies/2023/run.sh
 }
 
 setup_softhsm2

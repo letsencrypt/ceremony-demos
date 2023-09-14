@@ -25,7 +25,7 @@ To try it out:
 
 - Execute the demo ceremony.
   ```sh
-  ./reset.sh && ./run.sh
+  ./reset.sh && ./run-all.sh
   ```
 
 - If you're working on a specific branch of boulder making changes to the `ceremony` tool and need to test an uncoming ceremony:
