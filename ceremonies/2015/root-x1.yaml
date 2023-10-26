@@ -1,0 +1,36 @@
+ceremony-type: root
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  store-key-in-slot: 1307844626
+  store-key-with-label: root-x1
+key:
+  type: rsa
+  rsa-mod-length: 4096
+outputs:
+  public-key-path: ./root-x1.key.pem
+  certificate-path: ./root-x1.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) ISRG Root X1
+  organization: Internet Security Research Group
+  country: US
+  not-before: 2015-06-04 11:04:38
+  not-after: 2035-06-04 11:04:38
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+skip-lints:
+  # This is a root, not a sub-CA, so these don't apply.
+  - e_ext_authority_key_identifier_missing
+  - e_ext_authority_key_identifier_no_key_identifier
+  - w_sub_ca_aia_missing
+  - e_sub_ca_aia_missing
+  - e_sub_ca_certificate_policies_missing
+  - e_sub_ca_crl_distribution_points_missing
+  - w_sub_ca_aia_does_not_contain_issuing_ca_url
+  - n_sub_ca_eku_missing
+  # The digitalSignature key usage bit is required for all Root CA Certificates
+  # which which are used to sign OCSP responses (BRs 7.1.2.1b). We do not sign
+  # OCSP with our root certs.
+  - n_ca_digital_signature_not_set

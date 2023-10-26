@@ -1,0 +1,11 @@
+ceremony-type: key
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  store-key-in-slot: 732394342
+  store-key-with-label: int-e1
+key:
+  type: ecdsa
+  ecdsa-curve: P-384
+outputs:
+  public-key-path: ./int-e1.key.pem

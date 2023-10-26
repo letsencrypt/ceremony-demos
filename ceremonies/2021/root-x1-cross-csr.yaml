@@ -1,0 +1,14 @@
+ceremony-type: cross-csr
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-x1
+inputs:
+  public-key-path: ../2015/root-x1.key.pem
+outputs:
+  csr-path: ./root-x1-cross.csr.pem
+certificate-profile:
+  common-name: (FAKE) ISRG Root X1
+  organization: (FAKE) Internet Security Research Group
+  country: US

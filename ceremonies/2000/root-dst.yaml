@@ -1,0 +1,35 @@
+ceremony-type: root
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  store-key-in-slot: 1307844626
+  store-key-with-label: root-dst
+key:
+  type: rsa
+  rsa-mod-length: 2048
+outputs:
+  public-key-path: ./root-dst.key.pem
+  certificate-path: ./root-dst.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) DST Root CA X3
+  organization: (FAKE) IdenTrust
+  country: US
+  not-before: 2000-09-30 21:12:19
+  not-after: 2021-09-30 14:01:15
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+skip-lints:
+  # This is a root, not a sub-CA, so these don't apply.
+  - e_ext_authority_key_identifier_missing
+  - e_ext_authority_key_identifier_no_key_identifier
+  - e_sub_ca_aia_missing
+  - e_sub_ca_certificate_policies_missing
+  - e_sub_ca_crl_distribution_points_missing
+  - w_sub_ca_aia_does_not_contain_issuing_ca_url
+  - n_sub_ca_eku_missing
+  # The digitalSignature key usage bit is required for all Root CA Certificates
+  # which which are used to sign OCSP responses (BRs 7.1.2.1b). We do not sign
+  # OCSP with our root certs.
+  - n_ca_digital_signature_not_set

@@ -1,16 +1,36 @@
-# Let's Encrypt 2020 Hierarchy
+# Let's Encrypt Key Ceremony Demos
 
-Let's Encrypt is generating a new ECDSA P-384 root and new intermediates in
-2020. We will be using [Boulder's `ceremony` tooling to generate these][ceremony].
+This directory contains example config files that simulate certificate profiles
+used by Let's Encrypt for various key ceremonies in detail. The primary goal is
+to gather feedback prior to upcoming key ceremonies. The repository will also
+serve as a historical marker of past ceremonies detailing the evolution of the
+[Let's Encrypt chain of trust](https://letsencrypt.org/certificates/).
 
-This directory contains example config files that simulate the certificate
-profiles we will generate in detail. To try it out:
+To try it out:
 
- - install the `ceremony` tool in your $PATH
- - install SoftHSMv2
- - Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
-   install.
- - Run ./run.sh.
- - If you make any modifications, run ./reset.sh && ./run.sh.
+- Install the [`ceremony`](https://github.com/letsencrypt/boulder/blob/main/cmd/ceremony/README.md) tool in your `$PATH`.
 
-[ceremony]: https://github.com/letsencrypt/boulder/blob/main/cmd/ceremony/README.md
+  ```sh
+  go install https://github.com/letsencrypt/boulder/cmd/ceremony
+  ```
+
+- Install [SoftHSMv2](https://github.com/opendnssec/SoftHSMv2).
+
+  ```sh
+  sudo apt install softhsm2
+  ```
+
+- Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
+  install.
+
+- Execute the demo ceremony.
+  ```sh
+  ./reset.sh && ./run-all.sh
+  ```
+
+- If you're working on a specific branch of boulder making changes to the `ceremony` tool and need to test an uncoming ceremony:
+
+  ```sh
+  export CEREMONY_BIN=/path/to/active/development/boulder/bin/ceremony
+  ./run.sh
+  ```
