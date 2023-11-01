@@ -6,6 +6,8 @@ to gather feedback prior to upcoming key ceremonies. The repository will also
 serve as a historical marker of past ceremonies detailing the evolution of the
 [Let's Encrypt chain of trust](https://letsencrypt.org/certificates/).
 
+To see generated certificate output for the upcoming ceremony without needing to run this tooling, see the [outputs](./outputs/) folder.
+
 To try it out:
 
 - Install the [`ceremony`](https://github.com/letsencrypt/boulder/blob/main/cmd/ceremony/README.md) tool in your `$PATH`.
