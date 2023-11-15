@@ -1,0 +1,51 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            29:ac:e7:ba:95:46:02:d4:3e:67:58:e4:32:fd:ba:ec
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
+        Validity
+            Not Before: Sep  4 00:00:00 2020 GMT
+            Not After : Sep 15 16:00:00 2025 GMT
+        Subject: C = XX, O = (FAKE) Let's Encrypt, CN = (FAKE) E1
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (384 bit)
+                pub:
+                    04:53:27:86:fa:3d:42:dc:c9:2c:92:86:be:ae:00:
+                    49:aa:27:2f:b4:77:13:ec:3f:a2:aa:d0:3b:0e:4e:
+                    23:fc:da:c2:be:d8:3e:dc:ce:c3:a6:d0:bc:76:41:
+                    75:c4:60:34:48:04:56:70:4e:eb:f9:c6:7c:bf:21:
+                    5a:9a:41:76:3d:f5:c5:79:3e:fe:81:cf:bf:cb:1d:
+                    b1:e9:65:b6:51:5f:29:64:9c:ac:91:46:d4:ac:f1:
+                    cd:ee:08:4a:cc:13:96
+                ASN1 OID: secp384r1
+                NIST CURVE: P-384
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature, Certificate Sign, CRL Sign
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication, TLS Web Server Authentication
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:0
+            X509v3 Subject Key Identifier: 
+                39:04:BB:D9:03:11:2C:38:F7:A8:81:B1:6C:DA:41:73:89:9C:F5:DE
+            X509v3 Authority Key Identifier: 
+                EF:AA:FD:85:A1:FD:F8:1E:80:2C:B7:89:A3:AD:83:DD:39:1B:F2:53
+            Authority Information Access: 
+                CA Issuers - URI:http://x2.i.lencr.org/
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:http://x2.c.lencr.org/
+            X509v3 Certificate Policies: 
+                Policy: 2.23.140.1.2.1
+                Policy: 1.3.6.1.4.1.44947.1.1.1
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:66:02:31:00:be:ac:18:e4:ef:03:b1:ad:9e:f1:15:36:c4:
+        c6:d8:3a:91:1d:88:4c:c6:6c:95:ac:bd:6b:28:61:6e:35:ef:
+        d8:b0:ad:4a:3a:ee:e0:9c:f5:3f:98:56:87:58:da:b0:2d:02:
+        31:00:ec:a3:94:02:d9:f7:41:fb:b6:7a:ee:ab:14:75:49:70:
+        5d:fe:1b:67:61:2f:1b:53:46:78:8c:6f:03:a4:ba:0e:e1:f8:
+        7e:72:60:eb:0b:12:ec:87:a7:fb:66:38:d5:05
