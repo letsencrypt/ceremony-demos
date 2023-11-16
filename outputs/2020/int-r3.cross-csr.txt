@@ -1,0 +1,47 @@
+Certificate Request:
+    Data:
+        Version: 1 (0x0)
+        Subject: C = US, O = (FAKE) Let's Encrypt, CN = (FAKE) R3
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:a8:83:ac:06:23:e5:c7:a1:8d:7c:8c:92:38:a9:
+                    21:2e:6f:7a:16:c5:74:46:78:74:a1:bf:6f:9f:1f:
+                    e1:db:3f:44:3d:ae:60:9b:5a:14:16:47:9f:87:1d:
+                    61:da:3a:85:ab:41:f5:c5:57:5d:6b:7b:fb:b4:15:
+                    0b:46:e7:1e:60:1f:28:42:a9:0f:63:14:24:b4:9a:
+                    44:5f:cf:f8:92:0f:29:ec:43:0c:64:a6:32:65:71:
+                    c9:c8:ea:28:76:df:f9:00:02:61:9c:1e:ff:e2:f8:
+                    5a:33:12:bf:50:f3:fb:63:37:8c:bb:a5:93:73:8c:
+                    0b:7a:14:df:a5:13:e1:e2:65:2b:0a:60:3d:cf:b9:
+                    89:1c:22:b3:09:d0:f5:71:c8:61:af:26:26:ae:98:
+                    83:97:ca:28:55:49:e2:0e:c7:54:24:a1:58:45:f6:
+                    e9:65:2e:48:76:0b:e5:7a:9c:dc:41:05:52:93:56:
+                    ca:be:6c:fa:f3:b6:48:d3:03:07:47:e4:4c:62:98:
+                    eb:7c:f3:34:69:7b:65:54:99:a8:f7:07:fd:b5:f3:
+                    5f:40:6b:89:95:ea:1f:01:0c:2c:08:af:42:c1:24:
+                    0d:b1:44:09:68:bb:00:a4:fa:1d:0b:30:c2:5b:cf:
+                    f9:2b:1d:11:09:96:f0:7f:67:91:89:9e:79:40:20:
+                    31:bd
+                Exponent: 65537 (0x10001)
+        Attributes:
+            (none)
+            Requested Extensions:
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        69:fb:f2:3f:65:da:a2:66:4c:b8:18:43:2c:bf:b2:83:84:d1:
+        e9:68:2e:10:9e:8a:22:7e:16:5b:da:a8:63:cb:85:99:d9:83:
+        45:5f:5d:b7:48:9d:be:2b:3a:a4:cb:83:99:ef:85:c2:a6:ee:
+        12:7b:cb:b0:7c:b9:97:4d:fb:cb:42:af:92:b1:9c:3c:34:b0:
+        e3:44:14:bd:e8:8e:40:1f:66:5e:14:21:b4:5b:18:0b:da:c9:
+        67:44:b5:43:ee:2d:e8:f3:da:db:64:7d:ff:0c:5d:6d:51:98:
+        66:76:42:9c:42:86:cf:19:ae:f0:fe:d5:a3:21:26:fd:79:ba:
+        30:c6:ab:21:20:e4:35:42:81:66:71:27:f4:38:e5:91:3c:58:
+        0a:76:49:b4:01:7d:ce:28:95:96:8b:9e:25:9e:b7:96:91:8f:
+        f0:04:af:fc:9c:d9:04:67:7e:a5:40:64:33:80:58:4a:b7:a5:
+        c8:36:cb:cf:7b:8c:62:4f:5b:43:68:bc:98:9d:24:e6:a3:48:
+        d6:e1:35:0c:4d:cc:e0:f3:c9:06:ee:5d:a3:72:32:2d:81:70:
+        2c:d6:7c:12:3a:e3:0e:6b:dd:a4:e5:80:1a:d4:c0:ba:c1:24:
+        0e:43:a8:db:fd:c1:4e:b4:e4:7f:aa:30:8a:ba:d4:3f:2c:3e:
+        f1:8c:c1:9c

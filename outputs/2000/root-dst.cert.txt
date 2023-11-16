@@ -1,0 +1,58 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            8a:06:a9:6b:5d:b0:2a:26:bf:5c:d5:c0:2c:a7:d7:79
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, O = (FAKE) IdenTrust, CN = (FAKE) DST Root CA X3
+        Validity
+            Not Before: Sep 30 21:12:19 2000 GMT
+            Not After : Sep 30 14:01:15 2021 GMT
+        Subject: C = US, O = (FAKE) IdenTrust, CN = (FAKE) DST Root CA X3
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:dd:20:5b:85:b8:3a:35:e2:f2:33:bd:46:52:d8:
+                    c9:8d:d8:cf:fe:da:f7:4d:c9:14:d0:c6:ab:0a:84:
+                    cd:c0:18:c2:8d:1b:f0:44:d1:7d:20:ad:87:38:b6:
+                    4e:09:05:ee:26:f0:b4:a4:c8:d9:4d:7b:d9:42:e2:
+                    a9:2e:b0:5e:48:9d:b2:42:b1:85:8b:54:a0:90:8e:
+                    e1:1b:82:b4:8f:38:1d:73:40:67:e0:b3:fd:2b:d0:
+                    76:28:1a:07:a3:28:99:71:93:78:0b:17:3e:46:d3:
+                    f6:b5:51:17:e6:98:1c:ad:da:89:dc:f0:68:b4:f5:
+                    db:2d:8a:11:4e:44:03:72:3c:32:19:40:d9:5b:c7:
+                    51:94:15:7c:8a:11:e3:53:6a:58:be:55:e9:3f:98:
+                    2a:a8:59:b8:eb:d7:27:ed:34:8d:88:7e:4e:67:e7:
+                    a3:50:1c:a6:4f:f3:24:56:1a:72:12:53:42:9c:99:
+                    95:3e:df:b9:89:d1:01:a3:f1:9d:41:aa:ea:11:20:
+                    e1:5a:87:39:ac:d8:b8:53:26:e6:d7:39:ad:80:23:
+                    60:eb:1d:0c:2f:17:07:ea:e2:a1:c1:33:08:46:ff:
+                    d6:68:c4:ec:45:62:f4:5f:26:97:af:fa:49:21:06:
+                    77:24:79:19:88:38:ea:df:2c:9a:fd:23:6f:0b:75:
+                    df:75
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier: 
+                80:A1:4F:7B:73:79:D1:9E:36:E6:0C:33:88:E8:45:04:B7:0A:A1:15
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        58:b5:a2:e1:6c:4f:b2:dc:d6:a5:9e:a7:30:38:74:c8:ac:84:
+        fa:45:e8:db:8e:ad:70:12:34:cd:c9:b9:5d:72:a2:a7:c5:5c:
+        7c:56:1b:af:49:b7:33:09:7c:8d:e6:71:98:28:4f:95:e1:d1:
+        e5:16:70:4f:10:99:d1:65:a2:d3:1a:1f:b9:39:71:71:cf:09:
+        23:5d:25:cb:c8:5b:9c:4e:41:e6:7c:df:9b:c6:66:d6:22:fb:
+        74:8e:76:94:ab:f0:23:57:09:cc:be:fe:d2:93:98:95:d1:7c:
+        1b:1a:52:fd:6a:f4:c8:6c:67:fa:ac:4e:15:a1:80:a9:f3:c0:
+        9f:4e:0b:a9:8f:52:7f:ab:98:5d:60:ee:3f:5d:c9:46:65:4d:
+        7c:47:9f:3d:64:4a:6a:5f:ab:62:a4:d6:69:07:db:fb:58:61:
+        f0:20:98:73:8a:20:f4:16:f4:63:7b:84:7e:06:25:cb:10:9e:
+        78:4e:21:29:14:9f:91:20:76:f0:1d:c2:06:71:5f:0c:18:99:
+        e2:36:89:96:ed:0a:19:d1:ff:29:c0:34:d0:ac:0e:5f:14:b6:
+        48:64:d8:61:7a:86:a6:d8:39:94:fb:f3:a4:c6:b0:dc:6d:aa:
+        12:6c:7a:d1:e7:77:1d:e5:d8:5c:92:98:68:6d:ea:2d:6d:50:
+        d9:5e:f5:3a

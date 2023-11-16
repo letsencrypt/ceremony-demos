@@ -22,7 +22,7 @@ function setup_ceremony_tool() {
     fi
 
     TMPDIR="/tmp/ceremony-tools"
-    export CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"   
+    export CEREMONY_BIN_HISTORIC="${TMPDIR}/bin/PRE_2023/ceremony"
     mkdir -p "${TMPDIR}/bin/PRE_2023/"
     if [ ! -d "${TMPDIR}/boulder" ]; then
         git clone https://github.com/letsencrypt/boulder/ "${TMPDIR}/boulder"
@@ -30,11 +30,11 @@ function setup_ceremony_tool() {
 
     if [ ! -x "${CEREMONY_BIN_HISTORIC}" ]; then
         # Build ceremony on the commit prior to removing configuration of Policy OIDs.
-        # This will allow all ceremonies prior to 2023 to complete successfully without
+        # This will allow all ceremonies prior to 2021 to complete successfully without
         # requiring backporting changes to those ceremonies and losing the historical
         # representation of the ceremony.
         cd "${TMPDIR}/boulder"
-        git checkout 7d66d67054616867121e822fdc8ae58b10c1d71a
+        git checkout d73125d8f6ad0e0cbb8d9926a387580dccf8c99a
         make
         cd -
         cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/PRE_2023/"

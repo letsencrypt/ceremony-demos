@@ -1,0 +1,39 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            86:ee:95:25:0f:35:47:08:c7:2c:bb:5f:e4:6e:ab:3c
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
+        Validity
+            Not Before: Sep  4 00:00:00 2020 GMT
+            Not After : Sep 17 16:00:00 2040 GMT
+        Subject: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (384 bit)
+                pub:
+                    04:61:6c:33:e9:67:80:4e:b5:db:8f:63:f8:79:12:
+                    e3:24:11:df:4f:8c:2f:3b:03:d4:6a:63:ff:26:2f:
+                    7e:8f:0a:53:c3:0d:49:8f:33:fc:de:9b:ee:30:61:
+                    ea:da:52:af:d6:9a:21:26:53:99:4e:4d:0f:4c:d7:
+                    4b:13:b7:27:b0:69:08:26:75:cc:87:52:8a:81:b4:
+                    df:49:d1:d0:cd:08:58:ce:9c:f2:0c:40:6a:46:63:
+                    ee:fb:4f:a1:27:59:11
+                ASN1 OID: secp384r1
+                NIST CURVE: P-384
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier: 
+                EF:AA:FD:85:A1:FD:F8:1E:80:2C:B7:89:A3:AD:83:DD:39:1B:F2:53
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:65:02:31:00:8b:05:89:07:80:54:95:b9:9b:b0:11:f9:71:
+        79:dc:6d:ce:f5:61:34:53:82:eb:b5:16:83:55:63:54:44:8e:
+        bb:52:4f:6c:70:de:e2:08:5c:34:eb:53:96:4b:25:ff:9a:02:
+        30:5f:db:ef:ad:d5:68:05:7b:38:2f:57:29:ec:fd:72:80:71:
+        3c:f3:98:b8:08:1c:fd:eb:ac:c2:4d:91:ad:14:e1:b0:34:80:
+        86:b0:18:35:b6:bb:25:78:24:38:a2:76:45
