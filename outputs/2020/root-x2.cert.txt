@@ -2,7 +2,7 @@ Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
-            86:ee:95:25:0f:35:47:08:c7:2c:bb:5f:e4:6e:ab:3c
+            5c:df:b8:e7:db:53:82:ee:8c:90:db:e1:79:dc:21:85
         Signature Algorithm: ecdsa-with-SHA384
         Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
         Validity
@@ -13,13 +13,13 @@ Certificate:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (384 bit)
                 pub:
-                    04:61:6c:33:e9:67:80:4e:b5:db:8f:63:f8:79:12:
-                    e3:24:11:df:4f:8c:2f:3b:03:d4:6a:63:ff:26:2f:
-                    7e:8f:0a:53:c3:0d:49:8f:33:fc:de:9b:ee:30:61:
-                    ea:da:52:af:d6:9a:21:26:53:99:4e:4d:0f:4c:d7:
-                    4b:13:b7:27:b0:69:08:26:75:cc:87:52:8a:81:b4:
-                    df:49:d1:d0:cd:08:58:ce:9c:f2:0c:40:6a:46:63:
-                    ee:fb:4f:a1:27:59:11
+                    04:ef:69:b7:01:91:a5:6f:12:d0:c5:4f:ef:f5:68:
+                    0a:40:27:95:d8:17:47:72:bf:9c:62:a2:0b:f2:56:
+                    89:cc:58:72:09:30:fd:48:9f:0d:4e:97:bf:6a:e5:
+                    9a:b1:87:86:01:5d:9b:46:82:c8:9c:de:47:2f:46:
+                    ea:4a:18:07:5b:39:aa:0f:56:38:4f:15:4a:2b:bc:
+                    e2:b6:ee:94:50:71:84:1d:52:58:fc:03:38:f7:20:
+                    9f:b2:a1:bc:32:14:5d
                 ASN1 OID: secp384r1
                 NIST CURVE: P-384
         X509v3 extensions:
@@ -28,12 +28,12 @@ Certificate:
             X509v3 Basic Constraints: critical
                 CA:TRUE
             X509v3 Subject Key Identifier: 
-                EF:AA:FD:85:A1:FD:F8:1E:80:2C:B7:89:A3:AD:83:DD:39:1B:F2:53
+                39:F1:9D:B1:0E:16:89:71:F7:F8:DC:2A:55:DC:09:CC:83:5A:78:BB
     Signature Algorithm: ecdsa-with-SHA384
     Signature Value:
-        30:65:02:31:00:8b:05:89:07:80:54:95:b9:9b:b0:11:f9:71:
-        79:dc:6d:ce:f5:61:34:53:82:eb:b5:16:83:55:63:54:44:8e:
-        bb:52:4f:6c:70:de:e2:08:5c:34:eb:53:96:4b:25:ff:9a:02:
-        30:5f:db:ef:ad:d5:68:05:7b:38:2f:57:29:ec:fd:72:80:71:
-        3c:f3:98:b8:08:1c:fd:eb:ac:c2:4d:91:ad:14:e1:b0:34:80:
-        86:b0:18:35:b6:bb:25:78:24:38:a2:76:45
+        30:64:02:30:0d:56:69:f0:2d:33:67:4e:b5:71:e6:3a:b1:c1:
+        a5:ed:c8:65:86:94:b3:2c:b9:4b:29:61:50:26:7c:86:ed:d3:
+        73:47:10:b6:4e:f7:69:02:32:e4:1f:95:bf:d9:3a:b5:02:30:
+        2e:e7:7d:55:96:2e:b3:c9:41:68:2d:ec:65:b7:b3:c7:ae:22:
+        8e:fd:56:b5:3d:76:0b:1f:c9:e1:7e:04:4a:2c:56:6f:47:b0:
+        8d:db:78:89:79:ca:18:e8:29:ed:ed:48
