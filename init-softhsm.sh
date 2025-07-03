@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+set -o pipefail
+
 function usage() {
     echo -e "USAGE:
         This doesn't really need to be run again. It was used to generate the
@@ -21,8 +23,7 @@ if [ $# -ne 0 ]; then
     exit 1
 fi
 
-export SOFTHSM2_CONF="${PWD}/softhsm2.conf"
-echo "directories.tokendir = ${PWD}/softhsm/" > "${SOFTHSM2_CONF}"
+echo "directories.tokendir = ${PWD}/softhsm/" > "${PWD}/softhsm2.conf"
 
 softhsm2-util --init-token --free --label "root HSM" --so-pin 1234 --pin 1234
 softhsm2-util --init-token --free --label "intermediate HSM" --so-pin 1234 --pin 1234

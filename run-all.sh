@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+set -o pipefail
+
 function usage() {
     echo -e "Usage:
     This script simulates Let's Encrypt key ceremonies where we previously have
@@ -21,8 +23,8 @@ fi
 
 function setup_softhsm2() {
     # see init-softhsm.sh for slot initialization
+    echo "directories.tokendir = ${PWD}/softhsm/" > "${PWD}/softhsm2.conf"
     export SOFTHSM2_CONF="${PWD}/softhsm2.conf"
-    echo "directories.tokendir = ${PWD}/softhsm/" > ${SOFTHSM2_CONF}
 }
 
 function output_human_readable_text_files() {
@@ -42,8 +44,8 @@ function output_human_readable_text_files() {
 }
 
 function run_ceremonies() {
-    ./ceremonies/2015/run.sh
     ./ceremonies/2000/run.sh
+    ./ceremonies/2015/run.sh
     ./ceremonies/2020/run.sh
     ./ceremonies/2021/run.sh
     ./ceremonies/2023/run.sh
