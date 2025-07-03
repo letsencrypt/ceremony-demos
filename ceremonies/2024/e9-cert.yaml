@@ -14,8 +14,8 @@ certificate-profile:
   common-name: (FAKE) E9
   organization: (FAKE) Let's Encrypt
   country: US
-  not-before: 2023-09-25 00:00:00
-  not-after: 2026-09-24 23:59:59
+  not-before: 2024-03-13 00:00:00
+  not-after: 2027-03-12 23:59:59
   key-usages:
       - Cert Sign
       - CRL Sign

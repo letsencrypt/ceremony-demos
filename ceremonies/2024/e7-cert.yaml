@@ -6,16 +6,16 @@ pkcs11:
   signing-key-label: root-x2
 inputs:
   issuer-certificate-path: ../2020/root-x2.cert.pem
-  public-key-path: ./int-e8.key.pem
+  public-key-path: ./int-e7.key.pem
 outputs:
-  certificate-path: ./int-e8.cert.pem
+  certificate-path: ./int-e7.cert.pem
 certificate-profile:
   signature-algorithm: ECDSAWithSHA384
-  common-name: (FAKE) E8
+  common-name: (FAKE) E7
   organization: (FAKE) Let's Encrypt
   country: US
-  not-before: 2023-09-25 00:00:00
-  not-after: 2026-09-24 23:59:59
+  not-before: 2024-03-13 00:00:00
+  not-after: 2027-03-12 23:59:59
   key-usages:
       - Cert Sign
       - CRL Sign

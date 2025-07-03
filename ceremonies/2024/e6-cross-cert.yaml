@@ -1,4 +1,4 @@
-ceremony-type: intermediate
+ceremony-type: cross-certificate
 pkcs11:
   module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
   pin: 1234
@@ -6,16 +6,17 @@ pkcs11:
   signing-key-label: root-x1
 inputs:
   issuer-certificate-path: ../2015/root-x1.cert.pem
-  public-key-path: ./int-r11.key.pem
+  public-key-path: ./int-e6.key.pem
+  certificate-to-cross-sign-path: ./int-e6.cert.pem
 outputs:
-  certificate-path: ./int-r11.cert.pem
+  certificate-path: ./int-e6-cross.cert.pem
 certificate-profile:
   signature-algorithm: SHA256WithRSA
-  common-name: (FAKE) R11
+  common-name: (FAKE) E6
   organization: (FAKE) Let's Encrypt
   country: US
-  not-before: 2023-09-25 00:00:00
-  not-after: 2026-09-24 23:59:59
+  not-before: 2024-03-13 00:00:00
+  not-after: 2027-03-12 23:59:59
   key-usages:
       - Cert Sign
       - CRL Sign

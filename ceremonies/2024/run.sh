@@ -82,10 +82,10 @@ echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_VER}"
 "${CEREMONY_BIN}" --config "./e9-cross-cert.yaml"
 
 
-## 1704067201 is Dec 31, 2024
+## 1735606861 is Dec 31, 2024
 openssl verify \
     -check_ss_sig \
-    -attime 1704067201 \
+    -attime 1735606861 \
     -CAfile "../2015/root-x1.cert.pem" \
     -purpose sslserver \
     "./int-e5-cross.cert.pem" \
@@ -101,7 +101,7 @@ openssl verify \
 
 openssl verify \
     -check_ss_sig \
-    -attime 1704067201 \
+    -attime 1735606861 \
     -CAfile "../2020/root-x2.cert.pem" \
     -purpose sslserver \
     "./int-e5.cert.pem" \
