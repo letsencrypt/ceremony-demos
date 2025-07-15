@@ -39,9 +39,16 @@ It is also used to develop and demonstrate new config files for upcoming ceremon
   ./update-output-files.sh
   ```
 
-If you're working on making changes to the boulder ceremony tool itself, you can point the various run.sh scripts at a specific binary using the `CEREMONY_BIN` environment variable:
+If you're working on making changes to the boulder ceremony tool itself, you can point the various run.sh scripts at a specific binary using the `CEREMONY_BIN_YYYY` environment variables, for example:
 
 ```sh
-export CEREMONY_BIN=/path/to/active/development/boulder/bin/ceremony
-./run.sh
+export CEREMONY_BIN_2025=/path/to/active/development/boulder/bin/ceremony
+rm ceremonies/2025/*.pem && ./ceremonies/2025/run.sh
   ```
+
+If you run into difficulties communicating with the softhsm when you do this, you may also need to explicitly point it at the repo's config file:
+
+```sh
+export SOFTHSM2_CONF="$(pwd)/softhsm2.conf"
+rm ceremonies/2025/*.pem && ./ceremonies/2025/run.sh
+```

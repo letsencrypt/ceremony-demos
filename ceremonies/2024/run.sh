@@ -16,7 +16,7 @@ fi
 
 function setup_ceremony_tool() {
     # If we've been given a path to an executable to use, just use that.
-    if [ -n "${CEREMONY_BIN_2021}" ] && [ -x "${CEREMONY_BIN_2021}" ]; then
+    if [ -n "${CEREMONY_BIN_2024}" ] && [ -x "${CEREMONY_BIN_2024}" ]; then
         export CEREMONY_BIN="${CEREMONY_BIN_2021}"
         return 0
     fi
