@@ -14,44 +14,44 @@ if [ "${1}" == "-h" ]; then
     exit 0
 fi
 
-function _echo() {
-    echo "$(date +'%Y/%m/%d %H:%M:%S') ${@}"
-}
-
 function setup_ceremony_tool() {
-    if [ -n "${CEREMONY_BIN_2023}" ] && [ -x "${CEREMONY_BIN_2023}" ]; then
+    # If we've been given a path to an executable to use, just use that.
+    if [ -n "${CEREMONY_BIN_2024}" ] && [ -x "${CEREMONY_BIN_2024}" ]; then
+        export CEREMONY_BIN="${CEREMONY_BIN_2021}"
         return 0
     fi
 
-    TMPDIR="/tmp/ceremony-tools"
-    export CEREMONY_BIN_2023="${TMPDIR}/bin/2023/ceremony"
-    mkdir -p "${TMPDIR}/bin/2023/"
-    if [ ! -d "${TMPDIR}/boulder" ]; then
-        git clone https://github.com/letsencrypt/boulder/ "${TMPDIR}/boulder"
+    TOOLS="/tmp/ceremony-tools"
+
+    # This version was the most recent Boulder release at the time of the
+    # 2024-03-13 ceremony.
+    CEREMONY_VER="release-2024-03-12"
+
+    export CEREMONY_BIN="${TOOLS}/bin/${CEREMONY_VER}/ceremony"
+    if [ -x "${CEREMONY_BIN}" ]; then
+        return 0
     fi
 
-    if [ ! -x "${TMPDIR}/bin/2023/ceremony" ]; then
-        # Build ceremony on the commit prior to removing configuration of Policy OIDs.
-        # This will allow all ceremonies prior to 2023 to complete successfully without
-        # requiring backporting changes to those ceremonies and losing the historical
-        # representation of the ceremony.
-        cd "${TMPDIR}/boulder"
-        git checkout main
-        git pull
-        make
-        cd -
-        cp "${TMPDIR}/boulder/bin/ceremony" "${TMPDIR}/bin/2023/"
+    if [ ! -d "${TOOLS}/boulder" ]; then
+        git clone https://github.com/letsencrypt/boulder/ "${TOOLS}/boulder"
     fi
+
+    cd "${TOOLS}/boulder"
+    git checkout "${CEREMONY_VER}"
+    make
+    cd -
+
+    mkdir -p "$(dirname ${CEREMONY_BIN})"
+    cp "${TOOLS}/boulder/bin/ceremony" "${CEREMONY_BIN}"
 }
 
 setup_ceremony_tool
 
-CEREMONY_BIN="${CEREMONY_BIN_2023}"
-CEREMONY_YEAR="$(basename "$(dirname "$(readlink -f "${0}")")")"
-_echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_BIN}"
-
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
 cd "${CEREMONY_DIR}"
+
+CEREMONY_YEAR="$(basename ${CEREMONY_DIR})"
+echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_VER}"
 
 "${CEREMONY_BIN}" --config "./e5-key.yaml"
 "${CEREMONY_BIN}" --config "./e6-key.yaml"
@@ -82,10 +82,10 @@ cd "${CEREMONY_DIR}"
 "${CEREMONY_BIN}" --config "./e9-cross-cert.yaml"
 
 
-## 1704067201 is Dec 31, 2024
+## 1735606861 is Dec 31, 2024
 openssl verify \
     -check_ss_sig \
-    -attime 1704067201 \
+    -attime 1735606861 \
     -CAfile "../2015/root-x1.cert.pem" \
     -purpose sslserver \
     "./int-e5-cross.cert.pem" \
@@ -101,7 +101,7 @@ openssl verify \
 
 openssl verify \
     -check_ss_sig \
-    -attime 1704067201 \
+    -attime 1735606861 \
     -CAfile "../2020/root-x2.cert.pem" \
     -purpose sslserver \
     "./int-e5.cert.pem" \

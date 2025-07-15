@@ -1,38 +1,54 @@
 # Let's Encrypt Key Ceremony Demos
 
-This directory contains example config files that simulate certificate profiles
-used by Let's Encrypt for various key ceremonies in detail. The primary goal is
-to gather feedback prior to upcoming key ceremonies. The repository will also
-serve as a historical marker of past ceremonies detailing the evolution of the
-[Let's Encrypt chain of trust](https://letsencrypt.org/certificates/).
+This repository contains ceremony config files nearly identical to those used
+for various root and intermediate ceremonies conducted by Let's Encrypt over its
+history. You can see the outcomes of those real ceremonies on the [Let's Encrypt
+Chains of Trust](https://letsencrypt.org/certificates/) page. You can inspect
+the configs for each historical ceremony in //ceremonies/YYYY, and the
+corresponding outputs (demo public keys and certs, but not private keys and not
+the *real* outputs produced by the actual ceremonies) in //outputs/YYYY.
 
-To see generated certificate output for the upcoming ceremony without needing to run this tooling, see the [outputs](./outputs/) folder.
+It is also used to develop and demonstrate new config files for upcoming ceremonies. To prepare for an upcoming ceremony:
 
-To try it out:
-
-- Install the [`ceremony`](https://github.com/letsencrypt/boulder/blob/main/cmd/ceremony/README.md) tool in your `$PATH`.
-
-  ```sh
-  go install https://github.com/letsencrypt/boulder/cmd/ceremony
-  ```
-
-- Install [SoftHSMv2](https://github.com/opendnssec/SoftHSMv2).
+- Install [SoftHSMv2](https://github.com/opendnssec/SoftHSMv2):
 
   ```sh
   sudo apt install softhsm2
   ```
 
-- Update the YAML files, if necessary, to reflect that path to your SoftHSMv2
-  install.
+- Create a new //ceremonies/YYYY subdirectory, and populate it with:
+  - a README.md describing the ceremony;
+  - the necessary yaml files for the kind of ceremony you're preparing; and
+  - a run.sh which pins a specific version of the boulder ceremony tool to use.
 
-- Execute the demo ceremony.
+- Add your new ceremony's run.sh to run-all.sh.
+
+- Execute the ceremonies. Note that it's not generally feasible to execute only
+  the newest ceremony: this is because many ceremonies involve cross-signs from
+  previously-generated roots, and that requires access to those roots' private keys. Since we don't check any private keys into this repo, you have to regenerate everything from the beginning of time:
+
   ```sh
   ./reset.sh && ./run-all.sh
   ```
 
-- If you're working on a specific branch of boulder making changes to the `ceremony` tool and need to test an uncoming ceremony:
+- Once you're happy with the results, update the //outputs directory with the
+  results from your new ceremony, and updated versions of all the historical
+  ceremonies:
 
   ```sh
-  export CEREMONY_BIN=/path/to/active/development/boulder/bin/ceremony
-  ./run.sh
+  ./update-output-files.sh
   ```
+
+If you're working on making changes to the boulder ceremony tool itself, you can point the various run.sh scripts at a specific binary using the `CEREMONY_BIN_YYYY` environment variables, for example:
+
+```sh
+export CEREMONY_BIN_2025=/path/to/active/development/boulder/bin/ceremony
+rm ceremonies/2025/*.pem && ./ceremonies/2025/run.sh
+  ```
+
+If you run into difficulties communicating with the softhsm when you do this, you may also need to explicitly point it at the repo's config file:
+
+```sh
+export SOFTHSM2_CONF="$(pwd)/softhsm2.conf"
+rm ceremonies/2025/*.pem && ./ceremonies/2025/run.sh
+```
