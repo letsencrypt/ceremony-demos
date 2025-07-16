@@ -12,7 +12,7 @@ outputs:
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) R4
-  organization: (FAKE) Let's Encrypt
+  organization: Let's Encrypt
   country: US
   not-before: 2020-10-07 19:21:45
   not-after: 2021-09-29 19:21:45

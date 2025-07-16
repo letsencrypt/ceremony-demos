@@ -12,7 +12,7 @@ outputs:
 certificate-profile:
   signature-algorithm: ECDSAWithSHA384
   common-name: (FAKE) E7
-  organization: (FAKE) Let's Encrypt
+  organization: Let's Encrypt
   country: US
   not-before: 2024-03-13 00:00:00
   not-after: 2027-03-12 23:59:59

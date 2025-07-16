@@ -10,5 +10,5 @@ outputs:
   csr-path: ./int-r3.cross-csr.pem
 certificate-profile:
   common-name: (FAKE) R3
-  organization: (FAKE) Let's Encrypt
+  organization: Let's Encrypt
   country: US
