@@ -12,7 +12,7 @@ outputs:
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) ISRG Root X2
-  organization: (FAKE) Internet Security Research Group
+  organization: Internet Security Research Group
   country: US
   not-before: 2020-09-04 00:00:00
   not-after: 2025-09-15 16:00:00

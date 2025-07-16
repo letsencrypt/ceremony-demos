@@ -13,7 +13,7 @@ outputs:
 certificate-profile:
   signature-algorithm: SHA256WithRSA
   common-name: (FAKE) DST Root CA X3
-  organization: (FAKE) IdenTrust
+  organization: IdenTrust
   country: US
   not-before: 2000-09-30 21:12:19
   not-after: 2021-09-30 14:01:15
