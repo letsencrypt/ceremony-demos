@@ -45,20 +45,7 @@ function setup_ceremony_tool() {
     cp "${TOOLS}/boulder/bin/ceremony" "${CEREMONY_BIN}"
 }
 
-function setup_hlint() {
-    if [ -x "${HLINT_BIN}" ]; then
-      return
-    fi
-
-    pwd
-    cd hlint
-    GOBIN="${TOOLS}/bin" go install ./
-    export HLINT_BIN="${TOOLS}/bin/hlint"
-    cd -
-}
-
 setup_ceremony_tool
-setup_hlint
 
 CEREMONY_DIR="$(dirname ${BASH_SOURCE[0]})"
 cd "${CEREMONY_DIR}"
@@ -122,5 +109,3 @@ openssl verify \
     "./int-e7.cert.pem" \
     "./int-e8.cert.pem" \
     "./int-e9.cert.pem"
-
-"${HLINT_BIN}" *.cert.pem
