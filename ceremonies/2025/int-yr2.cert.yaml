@@ -1,0 +1,26 @@
+ceremony-type: intermediate
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-yr
+inputs:
+  issuer-certificate-path: ./root-yr.cert.pem
+  public-key-path: ./int-yr2.key.pem
+outputs:
+  certificate-path: ./int-yr2.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) YR2
+  organization: Let's Encrypt
+  country: US
+  not-before: 2025-08-15 00:00:00
+  not-after: 2028-08-14 23:59:59
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+      - Digital Signature
+  crl-url: http://yr.c.lencr.org/
+  issuer-url: http://yr.i.lencr.org/
+  policies:
+    - oid: 2.23.140.1.2.1
