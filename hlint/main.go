@@ -35,13 +35,13 @@ func main() {
 	for _, c := range certs {
 		skid := hex.EncodeToString(c.SubjectKeyId)
 		if otherCert, ok := bySKID[skid]; ok && !bytes.Equal(c.RawSubject, otherCert.RawSubject) {
-			fmt.Fprintf(os.Stderr, "SKID %s has conflicting subjects in %s and %s: %s vs %s\n",
+			fmt.Fprintf(os.Stderr, "SKID %s has conflicting subjects in %q and %q: %q vs %q\n",
 				skid, c.filename, otherCert.filename, c.Subject, otherCert.Subject)
 			errors = true
 		}
 
 		if otherCert, ok := bySubject[string(c.RawSubject)]; ok && !bytes.Equal(c.SubjectKeyId, otherCert.SubjectKeyId) {
-			fmt.Fprintf(os.Stderr, "subject %s has conflicting SKIDs in %s and %s: %x vs %x\n",
+			fmt.Fprintf(os.Stderr, "subject %s has conflicting SKIDs in %q and %q: %q vs %q\n",
 				c.Subject, c.filename, otherCert.filename, c.SubjectKeyId, otherCert.SubjectKeyId)
 			errors = true
 		}

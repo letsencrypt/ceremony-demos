@@ -9,7 +9,7 @@ Note that this is an opinionated tool: the is no general prohibition on distinct
 Subjects sharing a public key (and thus a SKID), but it is not our practice or
 intention to do so.
 
-# Usage
+## Usage
 
 ```
 hlint *.cert.pem
