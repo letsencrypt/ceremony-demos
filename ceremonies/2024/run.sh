@@ -109,3 +109,9 @@ openssl verify \
     "./int-e7.cert.pem" \
     "./int-e8.cert.pem" \
     "./int-e9.cert.pem"
+
+cd ../../hlint
+GOBIN="${TOOLS}/bin" go install ./
+cd -
+
+"${TOOLS}/bin/hlint" *.cert.pem
