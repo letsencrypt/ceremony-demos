@@ -1,0 +1,35 @@
+ceremony-type: root
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  store-key-in-slot: 1307844626
+  store-key-with-label: root-yr
+key:
+  type: rsa
+  rsa-mod-length: 4096
+outputs:
+  public-key-path: ./root-yr.key.pem
+  certificate-path: ./root-yr.cert.pem
+certificate-profile:
+  signature-algorithm: SHA256WithRSA
+  common-name: (FAKE) Root YR
+  organization: ISRG
+  country: US
+  not-before: 2025-08-15 00:00:00
+  not-after: 2045-08-14 23:59:59
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+skip-lints:
+  # This is a root, not a sub-CA, so these don't apply.
+  - e_ext_authority_key_identifier_no_key_identifier
+  - w_sub_ca_aia_missing
+  - e_sub_ca_certificate_policies_missing
+  - e_sub_ca_crl_distribution_points_missing
+  - w_sub_ca_aia_does_not_contain_issuing_ca_url
+  - n_sub_ca_eku_missing
+  - n_mp_allowed_eku
+  # The digitalSignature key usage bit is required for all Root CA Certificates
+  # which which are used to sign OCSP responses (BRs 7.1.2.1b). We do not sign
+  # OCSP with our root certs.
+  - n_ca_digital_signature_not_set
