@@ -14,7 +14,7 @@ certificate-profile:
   signature-algorithm: ECDSAWithSHA384
   # Must match x2-signed-by-x1.yaml
   common-name: (FAKE) ISRG Root X2
-  organization: Internet Security Research Group
+  organization: (FAKE) Internet Security Research Group
   country: US
   not-before: 2020-09-04 00:00:00
   not-after: 2040-09-17 16:00:00

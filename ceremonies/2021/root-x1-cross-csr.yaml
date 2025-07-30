@@ -10,5 +10,5 @@ outputs:
   csr-path: ./root-x1-cross.csr.pem
 certificate-profile:
   common-name: (FAKE) ISRG Root X1
-  organization: Internet Security Research Group
+  organization: (FAKE) Internet Security Research Group
   country: US
