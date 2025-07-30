@@ -1,0 +1,26 @@
+ceremony-type: intermediate
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-ye
+inputs:
+  issuer-certificate-path: ./root-ye.cert.pem
+  public-key-path: ./int-ye1.key.pem
+outputs:
+  certificate-path: ./int-ye1.cert.pem
+certificate-profile:
+  signature-algorithm: ECDSAWithSHA384
+  common-name: (FAKE) YE1
+  organization: Let's Encrypt
+  country: US
+  not-before: 2025-08-15 00:00:00
+  not-after: 2028-08-14 23:59:59
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+      - Digital Signature
+  crl-url: http://ye.c.lencr.org/
+  issuer-url: http://ye.i.lencr.org/
+  policies:
+    - oid: 2.23.140.1.2.1
