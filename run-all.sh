@@ -43,15 +43,21 @@ function output_human_readable_text_files() {
     wait
 }
 
+function run_hlint() {
+    go run ./hlint/main.go ceremonies/**/*.cert.pem
+}
+
 function run_ceremonies() {
     ./ceremonies/2000/run.sh
     ./ceremonies/2015/run.sh
     ./ceremonies/2020/run.sh
     ./ceremonies/2021/run.sh
     ./ceremonies/2024/run.sh
+    ./ceremonies/2025/run.sh
 }
 
 setup_softhsm2
 run_ceremonies
 output_human_readable_text_files
+run_hlint
 echo "All done!"

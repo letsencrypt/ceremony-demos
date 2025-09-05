@@ -1,0 +1,48 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            5c:55:ec:f6:7d:13:12:35:32:53:73:fa:4a:dd:c6:44
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
+        Validity
+            Not Before: Sep  3 00:00:00 2025 GMT
+            Not After : Sep  2 23:59:59 2032 GMT
+        Subject: C = US, O = ISRG, CN = (FAKE) Root YE
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (384 bit)
+                pub:
+                    04:78:98:68:b7:11:a0:2b:32:5b:0a:eb:80:c5:85:
+                    0c:08:36:b7:a7:86:06:23:18:03:20:61:f5:c4:03:
+                    78:65:2c:90:89:c1:32:7c:2a:66:be:42:9c:0a:eb:
+                    b9:84:9a:f9:4e:a0:f0:62:d0:01:0e:ad:bc:1c:8b:
+                    60:ec:4f:f0:34:36:cc:d5:46:ad:13:62:59:46:a7:
+                    45:83:20:50:ad:d8:69:c7:b3:0d:52:4c:22:0e:a5:
+                    f5:26:2c:92:85:01:b7
+                ASN1 OID: secp384r1
+                NIST CURVE: P-384
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier: 
+                1B:9A:2C:8C:9B:BB:67:AA:CA:2E:1D:A7:0F:4B:70:20:76:CF:78:95
+            X509v3 Authority Key Identifier: 
+                AD:9B:27:BE:A6:E5:B1:48:A9:94:51:3D:BF:7D:14:C8:CA:3B:41:65
+            Authority Information Access: 
+                CA Issuers - URI:http://x2.i.lencr.org/
+            X509v3 Certificate Policies: 
+                Policy: 2.23.140.1.2.1
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:http://x2.c.lencr.org/
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:65:02:31:00:8e:22:5c:a3:5b:1e:8c:fc:d6:7e:ad:71:e3:
+        1a:fa:8c:9c:d4:58:dd:0a:06:a3:be:0f:63:eb:8a:95:87:11:
+        e6:10:9f:53:45:8a:d1:7f:53:92:8a:10:34:d7:c3:b2:f3:02:
+        30:2d:58:07:0b:31:85:a5:11:b1:62:f6:b2:45:7d:ec:78:ab:
+        ac:9b:b4:39:93:7e:f8:93:73:2b:bd:76:47:e9:81:8d:0d:d0:
+        e6:4c:73:e1:fa:35:8e:85:08:7b:8f:97:10

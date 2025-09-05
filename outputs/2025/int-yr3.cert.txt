@@ -1,0 +1,83 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            e6:9e:62:3b:53:6e:c8:c0:8e:6b:a2:2d:55:37:ca:d2
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, O = ISRG, CN = (FAKE) Root YR
+        Validity
+            Not Before: Sep  3 00:00:00 2025 GMT
+            Not After : Sep  2 23:59:59 2028 GMT
+        Subject: C = US, O = Let's Encrypt, CN = (FAKE) YR3
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:ae:1e:ad:cf:02:4b:64:55:fa:f6:f9:16:d0:4f:
+                    96:79:4f:8b:91:0a:19:d4:b8:b1:2e:00:97:cd:5d:
+                    69:aa:86:97:28:c5:06:75:89:51:d1:fe:5c:02:f7:
+                    ff:d2:d4:1e:ac:35:4b:e7:d4:8b:66:15:69:5a:2d:
+                    c5:d7:33:14:8e:09:12:c0:67:60:20:20:59:31:fe:
+                    7c:2b:8d:c7:18:43:e0:f0:c3:12:54:2b:c9:bf:aa:
+                    8b:1e:7d:bd:c8:f6:ca:38:9e:dc:eb:1b:56:1f:6f:
+                    f9:21:24:39:76:42:35:08:9a:2a:2a:42:df:f2:d9:
+                    8b:92:da:bd:e9:f2:64:26:e6:18:e5:e9:a7:11:2a:
+                    da:1a:8b:5a:a6:12:26:b0:15:c2:78:63:14:e2:34:
+                    7b:f1:88:62:18:88:8e:ff:97:c4:7d:12:7e:55:84:
+                    e9:29:f0:21:62:37:d6:6d:3c:dc:6e:a5:2a:e5:fc:
+                    57:d9:76:36:c6:0f:8d:a6:63:79:1d:7d:32:1a:8c:
+                    a7:ed:81:12:ef:56:df:b0:2f:d2:32:c3:61:d2:36:
+                    9d:1d:6c:ef:57:10:0a:12:8c:5c:7f:f6:f0:70:3d:
+                    9c:74:63:3b:eb:69:2a:a4:9b:a1:b4:63:6e:48:02:
+                    37:8c:c0:f3:ef:3e:69:4d:88:1b:28:31:4a:25:77:
+                    bb:e1
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature, Certificate Sign, CRL Sign
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:0
+            X509v3 Subject Key Identifier: 
+                B0:BC:A9:09:A2:68:73:35:9B:F4:27:1B:A4:C0:05:07:08:1B:0A:D3
+            X509v3 Authority Key Identifier: 
+                7E:57:C2:E9:3D:33:A3:01:6C:99:35:4C:6C:61:5A:2C:DF:E1:37:B3
+            Authority Information Access: 
+                CA Issuers - URI:http://yr.i.lencr.org/
+            X509v3 Certificate Policies: 
+                Policy: 2.23.140.1.2.1
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:http://yr.c.lencr.org/
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        42:7d:6d:95:94:71:8f:2a:85:b7:c8:89:bf:39:76:5f:72:40:
+        c8:d1:b3:77:29:36:c9:04:13:84:59:5a:15:42:d1:8a:c8:90:
+        3f:a6:e0:b8:ac:66:41:0a:bd:28:17:1d:f3:53:5a:0c:7c:6c:
+        70:dd:cc:e6:bc:ea:2d:5f:44:78:00:e6:d5:2e:c4:da:67:b5:
+        e8:5d:8f:7c:48:4c:64:da:71:9b:65:f2:86:5e:e3:89:17:a5:
+        23:03:99:6a:57:ee:6f:f8:cc:b6:af:81:10:49:11:00:06:1d:
+        53:c3:d1:68:08:e6:c3:3f:55:4a:ed:18:58:2c:7c:94:81:fd:
+        6d:41:0e:86:87:97:63:ee:08:b7:d4:41:f4:b9:4c:d5:16:17:
+        cc:69:f1:02:d1:17:e8:e3:54:09:db:4d:2c:f4:22:c4:cd:81:
+        27:ff:2a:18:d1:6d:90:df:fa:35:cf:df:a0:17:92:f4:4a:09:
+        79:64:5b:28:c5:46:08:95:5a:58:95:13:69:88:46:81:75:c5:
+        42:f0:89:11:07:54:5a:e2:83:29:f4:57:64:b2:bd:49:e9:3d:
+        ea:d4:0d:41:4b:fb:9c:88:36:a0:6b:9d:40:b7:df:0d:17:1a:
+        81:2b:1e:9d:f4:ad:1e:ef:7c:e4:6b:96:bf:01:b6:14:c4:60:
+        44:c7:72:33:3d:aa:56:a3:87:0f:20:3c:76:c1:21:79:fa:aa:
+        f3:90:33:b8:be:7b:7e:02:12:71:1c:64:f3:93:c8:6e:fc:48:
+        f5:c5:18:93:37:3c:2d:40:cc:7e:12:eb:83:69:d2:e8:8f:76:
+        7f:52:23:51:96:07:4d:0e:dd:33:da:fb:d3:f1:45:95:dc:e1:
+        0e:51:10:f9:21:fc:a3:48:c4:fb:29:4e:7a:53:54:0c:f2:7d:
+        dd:68:b8:27:3d:83:5a:83:61:30:75:cf:7d:77:ca:cd:5c:a8:
+        14:db:97:f9:19:24:17:52:2f:e6:a9:d0:ba:f9:38:84:63:e9:
+        1c:fa:0c:73:7f:15:84:14:84:17:5d:b7:be:9b:30:38:f8:c4:
+        81:df:80:fc:b2:98:e2:02:3c:62:a9:ec:3c:9e:5f:66:c7:c3:
+        31:57:bb:9a:52:27:26:29:9e:fd:9d:fb:28:5d:05:06:80:ae:
+        c5:64:a5:37:8a:4f:69:ad:91:94:97:10:cb:e2:3a:c4:91:a0:
+        bf:ff:a7:ab:95:94:a6:51:5a:13:06:19:b3:56:48:f7:da:5a:
+        47:86:3a:05:76:9a:1e:16:b0:53:af:eb:2a:fb:c3:0c:28:9b:
+        d2:a4:ff:72:e3:60:64:97:9b:a0:19:c0:4e:1c:f9:e3:7b:30:
+        77:8d:c3:7a:b2:0a:17:01

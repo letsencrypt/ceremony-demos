@@ -1,0 +1,50 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            a6:03:91:21:49:f0:52:73:84:64:c6:8a:c2:d2:09:03
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C = US, O = ISRG, CN = (FAKE) Root YE
+        Validity
+            Not Before: Sep  3 00:00:00 2025 GMT
+            Not After : Sep  2 23:59:59 2028 GMT
+        Subject: C = US, O = Let's Encrypt, CN = (FAKE) YE3
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (384 bit)
+                pub:
+                    04:cd:9c:2a:8e:38:9e:ae:12:77:ad:af:29:0e:84:
+                    b3:f5:31:b1:d7:79:fc:31:7d:cd:94:bb:5e:af:f5:
+                    56:ce:28:95:4d:4c:5b:71:fb:e8:3a:12:c2:57:ce:
+                    17:87:0e:7a:03:da:23:6e:f0:32:18:ba:ad:3f:bd:
+                    7e:d6:11:63:d6:5a:70:69:37:97:71:f3:0e:11:9d:
+                    37:95:ff:83:25:32:ef:fb:c3:e9:92:99:32:c7:ca:
+                    7a:46:57:a0:91:3f:d9
+                ASN1 OID: secp384r1
+                NIST CURVE: P-384
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature, Certificate Sign, CRL Sign
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:0
+            X509v3 Subject Key Identifier: 
+                F8:09:95:69:88:96:95:CF:B9:F1:14:52:B5:D6:B0:51:0B:46:2A:8B
+            X509v3 Authority Key Identifier: 
+                1B:9A:2C:8C:9B:BB:67:AA:CA:2E:1D:A7:0F:4B:70:20:76:CF:78:95
+            Authority Information Access: 
+                CA Issuers - URI:http://ye.i.lencr.org/
+            X509v3 Certificate Policies: 
+                Policy: 2.23.140.1.2.1
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:http://ye.c.lencr.org/
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:66:02:31:00:b9:bc:50:80:b6:63:b7:d9:d6:7a:65:0e:36:
+        a4:9b:e9:fd:7c:bc:7f:eb:10:20:39:ee:28:1c:85:22:c8:e9:
+        f0:15:52:ec:ef:a0:8f:cd:3b:36:ce:da:36:5a:fd:b6:ae:02:
+        31:00:c5:68:f0:b6:40:61:74:ad:33:96:fa:6a:79:c7:4e:a4:
+        c6:1e:82:05:52:68:08:a8:4e:2a:7a:5f:49:22:ff:e1:25:45:
+        ca:0c:14:0a:ed:7b:93:b2:29:91:3a:9a:a0:03
