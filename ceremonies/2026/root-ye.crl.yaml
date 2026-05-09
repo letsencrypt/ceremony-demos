@@ -1,0 +1,17 @@
+ceremony-type: crl
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: Root YE
+inputs:
+  issuer-certificate-path: ./root-ye.cert.pem
+outputs:
+  crl-path: ./root-ye.crl.pem
+crl-profile:
+  this-update: 2026-05-13 00:00:00
+  next-update: 2027-05-11 23:59:59
+  number: 107
+skip-lints:
+  # This lint thinks these CRLs contain Subscriber certs and enforces the wrong limit.
+  - e_crl_next_update_invalid

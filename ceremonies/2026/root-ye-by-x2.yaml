@@ -1,0 +1,32 @@
+ceremony-type: cross-certificate
+pkcs11:
+  module: /usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so
+  pin: 1234
+  signing-key-slot: 1307844626
+  signing-key-label: root-x2
+inputs:
+  issuer-certificate-path: ../2020/root-x2.cert.pem
+  public-key-path: ../2025/root-ye.key.pem
+  certificate-to-cross-sign-path: ../2025/root-ye.cert.pem
+outputs:
+  certificate-path: ./root-ye-by-x2.cert.pem
+certificate-profile:
+  signature-algorithm: ECDSAWithSHA384
+  common-name: (FAKE) Root YE
+  organization: ISRG
+  country: US
+  not-before: 2026-05-13 00:00:00
+  not-after: 2032-09-02 23:59:59
+  key-usages:
+      - Cert Sign
+      - CRL Sign
+  ekus: server
+  crl-url: http://x2.c.lencr.org/
+  issuer-url: http://x2.i.lencr.org/
+  policies:
+    - oid: 2.23.140.1.2.1
+skip-lints:
+  # The digitalSignature key usage bit is required for all Root CA Certificates
+  # which which are used to sign OCSP responses (BRs 7.1.2.1.b). We do not sign
+  # OCSP with our root certs.
+  - n_ca_digital_signature_not_set
