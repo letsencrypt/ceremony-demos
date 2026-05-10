@@ -63,10 +63,10 @@ echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_VER}"
 # Check that all the existing Gen Y intermediates (issued in 2025) still
 # validate up to the existing Gen X roots (issued in 2015 and 2020) via the new
 # cross-signs.
-# 1767142861 is Dec 31, 2026.
+# 1780272000 is June 1, 2026.
 openssl verify \
     -check_ss_sig \
-    -attime 1767142861 \
+    -attime 1780272000 \
     -trusted "../2015/root-x1.cert.pem" \
     -untrusted "./root-yr-by-x1.cert.pem" \
     -purpose sslserver \
@@ -76,7 +76,7 @@ openssl verify \
 
 openssl verify \
     -check_ss_sig \
-    -attime 1767142861 \
+    -attime 1780272000 \
     -trusted "../2020/root-x2.cert.pem" \
     -untrusted "./root-ye-by-x2.cert.pem" \
     -purpose sslserver \
@@ -86,7 +86,7 @@ openssl verify \
 
 openssl verify \
     -check_ss_sig \
-    -attime 1767142861 \
+    -attime 1780272000 \
     -trusted "../2015/root-x1.cert.pem" \
     -untrusted <(cat "./root-x2-by-x1.cert.pem" "./root-ye-by-x2.cert.pem") \
     -purpose sslserver \

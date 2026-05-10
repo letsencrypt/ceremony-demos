@@ -12,10 +12,11 @@ crl-profile:
   this-update: 2026-05-13 00:00:00
   next-update: 2027-05-11 23:59:59
   number: 107
-  - certificate-path: ../2025/x2-by-x1.cert.pem
+  revoked-certificates:
+  - certificate-path: ../2025/root-x2-by-x1.cert.pem
     revocation-date: 2027-05-12 00:00:00
     revocation-reason: superseded
-  - certificate-path: ../2025/yr-by-x1.cert.pem
+  - certificate-path: ../2025/root-yr-by-x1.cert.pem
     revocation-date: 2027-05-12 00:00:00
     revocation-reason: superseded
 skip-lints:
