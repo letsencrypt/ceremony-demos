@@ -2,24 +2,24 @@ Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
-            5c:55:ec:f6:7d:13:12:35:32:53:73:fa:4a:dd:c6:44
+            eb:8c:e6:47:e7:e1:cc:0a:64:e1:9a:18:eb:63:91:f1
         Signature Algorithm: ecdsa-with-SHA384
-        Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
+        Issuer: C=US, O=Internet Security Research Group, CN=(FAKE) ISRG Root X2
         Validity
             Not Before: Sep  3 00:00:00 2025 GMT
             Not After : Sep  2 23:59:59 2032 GMT
-        Subject: C = US, O = ISRG, CN = (FAKE) Root YE
+        Subject: C=US, O=ISRG, CN=(FAKE) Root YE
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (384 bit)
                 pub:
-                    04:78:98:68:b7:11:a0:2b:32:5b:0a:eb:80:c5:85:
-                    0c:08:36:b7:a7:86:06:23:18:03:20:61:f5:c4:03:
-                    78:65:2c:90:89:c1:32:7c:2a:66:be:42:9c:0a:eb:
-                    b9:84:9a:f9:4e:a0:f0:62:d0:01:0e:ad:bc:1c:8b:
-                    60:ec:4f:f0:34:36:cc:d5:46:ad:13:62:59:46:a7:
-                    45:83:20:50:ad:d8:69:c7:b3:0d:52:4c:22:0e:a5:
-                    f5:26:2c:92:85:01:b7
+                    04:37:30:be:90:f7:9a:4a:1d:e9:af:b7:d8:d6:73:
+                    90:a7:c2:bb:a0:5f:54:54:d1:5e:1e:ca:3e:03:92:
+                    a6:30:94:d2:46:d0:4b:ed:dc:7a:dd:4a:f6:e7:79:
+                    60:d3:90:51:06:03:68:c5:26:75:f5:e3:71:39:ae:
+                    ee:52:af:4f:0b:cf:71:a2:90:b2:b0:9d:f8:c7:a3:
+                    38:db:ca:d4:b5:1f:57:a7:45:5d:0d:80:4b:8f:e6:
+                    e5:45:5c:b1:9a:06:e9
                 ASN1 OID: secp384r1
                 NIST CURVE: P-384
         X509v3 extensions:
@@ -28,9 +28,9 @@ Certificate:
             X509v3 Basic Constraints: critical
                 CA:TRUE
             X509v3 Subject Key Identifier: 
-                1B:9A:2C:8C:9B:BB:67:AA:CA:2E:1D:A7:0F:4B:70:20:76:CF:78:95
+                87:42:D2:BB:8F:7B:8A:66:F5:E7:86:39:BB:94:C7:64:03:96:B3:23
             X509v3 Authority Key Identifier: 
-                AD:9B:27:BE:A6:E5:B1:48:A9:94:51:3D:BF:7D:14:C8:CA:3B:41:65
+                38:CF:60:2D:0C:A1:F0:3D:CE:EF:38:D0:4B:CA:9F:8F:CA:B8:7B:97
             Authority Information Access: 
                 CA Issuers - URI:http://x2.i.lencr.org/
             X509v3 Certificate Policies: 
@@ -38,11 +38,12 @@ Certificate:
             X509v3 CRL Distribution Points: 
                 Full Name:
                   URI:http://x2.c.lencr.org/
+
     Signature Algorithm: ecdsa-with-SHA384
     Signature Value:
-        30:65:02:31:00:8e:22:5c:a3:5b:1e:8c:fc:d6:7e:ad:71:e3:
-        1a:fa:8c:9c:d4:58:dd:0a:06:a3:be:0f:63:eb:8a:95:87:11:
-        e6:10:9f:53:45:8a:d1:7f:53:92:8a:10:34:d7:c3:b2:f3:02:
-        30:2d:58:07:0b:31:85:a5:11:b1:62:f6:b2:45:7d:ec:78:ab:
-        ac:9b:b4:39:93:7e:f8:93:73:2b:bd:76:47:e9:81:8d:0d:d0:
-        e6:4c:73:e1:fa:35:8e:85:08:7b:8f:97:10
+        30:66:02:31:00:82:2b:93:ac:eb:cd:e0:e1:3c:23:24:a3:e6:
+        11:10:52:66:eb:dd:e4:89:a3:5c:54:88:8c:5d:f4:67:28:93:
+        47:f6:61:93:25:37:8c:ae:2f:31:ce:5c:4c:38:72:e1:f6:02:
+        31:00:ae:fb:d5:77:16:54:31:85:9b:9e:c6:bd:56:a1:8c:a2:
+        46:73:99:6a:75:85:de:89:35:54:6f:21:b5:c4:20:2d:76:5f:
+        d6:33:b3:bd:49:ee:63:9d:06:0e:d7:9d:ef:f1
