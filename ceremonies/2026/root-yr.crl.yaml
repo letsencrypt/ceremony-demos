@@ -5,7 +5,7 @@ pkcs11:
   signing-key-slot: 1307844626
   signing-key-label: Root YR
 inputs:
-  issuer-certificate-path: ./root-yr.cert.pem
+  issuer-certificate-path: ../2025/root-yr.cert.pem
 outputs:
   crl-path: ./root-yr.crl.pem
 crl-profile:
