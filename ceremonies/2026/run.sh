@@ -25,7 +25,7 @@ function setup_ceremony_tool() {
 
     # This version was the most recent Boulder release at the time we prepared
     # this ceremony demo.
-    CEREMONY_VER="v0.20260902.0"
+    CEREMONY_VER="v0.20260512.0"
 
     export CEREMONY_BIN="${TOOLS}/bin/${CEREMONY_VER}/ceremony"
     if [ -x "${CEREMONY_BIN}" ]; then
@@ -59,6 +59,8 @@ echo "Running ${CEREMONY_YEAR} ceremony with tooling at ${CEREMONY_VER}"
 "${CEREMONY_BIN}" --config "./root-yr-by-x1.yaml"
 "${CEREMONY_BIN}" --config "./root-x1.crl.yaml"
 "${CEREMONY_BIN}" --config "./root-x2.crl.yaml"
+"${CEREMONY_BIN}" --config "./root-ye.crl.yaml"
+"${CEREMONY_BIN}" --config "./root-yr.crl.yaml"
 
 # Check that all the existing Gen Y intermediates (issued in 2025) still
 # validate up to the existing Gen X roots (issued in 2015 and 2020) via the new
