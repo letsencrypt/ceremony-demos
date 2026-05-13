@@ -9,7 +9,7 @@ inputs:
 outputs:
   crl-path: ./root-ye.crl.pem
 crl-profile:
-  this-update: 2026-05-13 00:00:00
+  this-update: 2026-05-13 18:00:00
   next-update: 2027-05-11 23:59:59
   number: 107
 skip-lints:
