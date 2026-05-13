@@ -9,15 +9,16 @@ inputs:
 outputs:
   crl-path: ./root-x1.crl.pem
 crl-profile:
-  this-update: 2026-05-13 00:00:00
+  this-update: 2026-05-13 18:00:00
   next-update: 2027-05-11 23:59:59
+
   number: 107
   revoked-certificates:
   - certificate-path: ../2025/root-x2-by-x1.cert.pem
-    revocation-date: 2026-05-12 00:00:00
+    revocation-date: 2026-05-13 16:00:00
     revocation-reason: superseded
   - certificate-path: ../2025/root-yr-by-x1.cert.pem
-    revocation-date: 2026-05-12 00:00:00
+    revocation-date: 2026-05-13 16:00:00
     revocation-reason: superseded
 skip-lints:
   # This lint thinks these CRLs contain Subscriber certs and enforces the wrong limit.
