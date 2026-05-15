@@ -1,0 +1,46 @@
+Certificate Revocation List (CRL):
+    Version 2 (0x1)
+    Signature Algorithm: sha256WithRSAEncryption
+    Issuer: C=US, O=ISRG, CN=(FAKE) Root YR
+    Last Update: May 13 18:00:00 2026 GMT
+    Next Update: May 11 23:59:59 2027 GMT
+    CRL extensions:
+        X509v3 Authority Key Identifier: 
+            9C:6E:F6:09:EE:40:56:8B:AF:C1:BA:71:55:AE:4F:AD:15:EE:84:7D
+        X509v3 CRL Number: 
+            107
+        X509v3 Issuing Distribution Point: critical
+            Only CA Certificates
+
+No Revoked Certificates.
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        87:bf:25:0e:44:b2:c3:30:e1:3f:d0:79:53:1e:b8:50:c7:9a:
+        bc:84:85:aa:42:cf:ba:2d:d3:a9:5e:d9:6a:d2:0e:e8:1d:29:
+        f4:ea:c5:da:bd:49:51:f3:8a:99:36:e1:e7:e8:62:3d:b5:75:
+        6c:9d:f3:dc:c2:a7:60:f2:73:bc:02:a5:a1:fd:63:bc:dd:7f:
+        75:95:e1:76:be:aa:4e:a6:2d:33:a9:9c:71:87:ff:71:7c:69:
+        96:7a:d5:0f:6d:77:da:30:eb:bc:63:52:0b:5e:63:90:75:52:
+        34:90:85:79:50:07:a5:03:c6:11:37:46:30:32:41:2c:c7:b5:
+        d7:d1:a9:58:d5:fd:63:b8:6b:40:f3:2b:3c:d0:d4:f4:ad:b9:
+        d5:61:6d:11:29:29:9e:25:9a:b6:ed:eb:19:19:ee:1e:80:66:
+        d8:e5:26:ee:7b:52:8a:3c:b1:f7:47:f4:de:d2:87:74:ac:e5:
+        25:f3:53:75:2f:57:94:5f:ea:93:26:ea:d3:42:00:3c:24:89:
+        a2:c8:f7:5a:71:6f:71:30:8a:60:eb:d6:75:e0:1e:a7:aa:af:
+        0d:ac:db:2e:4b:29:da:db:cd:a3:01:1c:c7:bc:bc:ff:95:aa:
+        92:c7:c1:4d:ec:8e:84:1e:58:de:7b:d3:71:62:42:7d:00:54:
+        8f:dd:c4:b9:c3:f4:fd:c9:cc:75:63:5a:04:db:11:a8:18:69:
+        8d:3e:eb:ea:56:73:19:b9:b1:c2:76:2c:64:00:b8:a2:6a:21:
+        78:00:49:1b:30:91:60:0c:9e:a8:eb:d9:09:70:19:51:17:fa:
+        ec:ce:5b:19:08:5c:e1:f3:43:9f:8a:b0:3c:b8:81:7d:e6:0e:
+        27:e9:8f:24:87:61:60:97:3f:75:59:59:3a:fb:83:97:8d:9f:
+        79:b5:fe:07:6b:01:a6:4c:f9:13:d5:79:16:45:bf:03:c1:4a:
+        19:da:d1:65:20:ce:10:b8:3e:f5:75:45:c2:7a:61:7c:ec:5f:
+        a0:cf:62:b0:b6:cd:8c:52:c4:3c:71:1b:1a:98:43:65:7e:2c:
+        41:d7:b0:16:8e:81:5c:77:19:20:98:4b:df:ef:49:42:31:0d:
+        7f:ee:01:ab:f6:d8:ee:3d:f5:86:52:82:d4:87:1e:10:75:c1:
+        51:d2:ac:14:66:e0:80:f7:48:e8:81:73:ac:95:9f:e8:64:d0:
+        19:77:ca:f2:c7:f2:8f:dc:64:d0:a0:04:a8:6c:f0:08:d3:1f:
+        01:a7:c9:43:25:f8:64:9b:9d:38:b9:33:96:64:ee:de:11:97:
+        51:93:ab:44:d6:31:f8:ab:9a:e2:28:e5:d6:71:f6:91:d4:28:
+        2b:b9:da:b3:a4:15:eb:02
