@@ -2,7 +2,7 @@ Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
-            a0:5d:bb:35:8c:c5:fb:3f:83:90:f5:b4:96:2c:77:d5
+            d0:92:36:c0:73:a3:a2:7c:c5:b1:e4:01:d7:1f:ac:b9
         Signature Algorithm: ecdsa-with-SHA384
         Issuer: C=US, O=Internet Security Research Group, CN=(FAKE) ISRG Root X2
         Validity
@@ -43,9 +43,9 @@ Certificate:
 
     Signature Algorithm: ecdsa-with-SHA384
     Signature Value:
-        30:65:02:31:00:ed:9f:bb:f0:0f:33:34:ca:78:2f:c5:12:8a:
-        5e:d7:8f:0b:62:ed:9c:65:12:fd:43:0c:f2:dc:c9:15:8c:f3:
-        03:fc:a3:54:a8:c9:47:62:2b:c5:c5:a7:d2:22:22:be:32:02:
-        30:42:91:9e:54:66:da:fe:7a:75:cd:ed:4a:ed:bc:8b:00:8c:
-        11:fc:78:e3:8f:85:29:0a:4c:dc:48:42:44:a0:ae:ac:68:82:
-        86:65:29:15:bc:b0:30:48:f7:1d:ac:1a:bc
+        30:65:02:30:42:e6:f0:27:d4:4f:49:6c:ea:cd:9e:a8:09:cf:
+        ea:e9:17:39:68:d7:b5:6d:f7:4d:86:de:84:34:72:0b:c7:bb:
+        ce:16:45:b6:a6:4f:9f:8c:8e:ce:68:6b:c5:d6:2b:01:02:31:
+        00:d9:c2:d1:e1:93:b1:9d:ea:85:d9:40:0b:c8:5b:a6:34:53:
+        6c:6e:43:e2:37:5f:50:1f:2b:7c:c0:91:05:5c:b8:84:22:8a:
+        ba:b0:ff:37:09:58:7e:f8:18:40:2b:57:89
