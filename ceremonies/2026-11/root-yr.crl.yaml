@@ -10,7 +10,7 @@ outputs:
   crl-path: ./root-yr.crl.pem
 crl-profile:
   this-update: 2026-11-05 00:00:00
-  next-update: 2027-10-05 23:59:59
+  next-update: 2027-10-31 23:59:59
   number: 108
 skip-lints:
   # This lint thinks these CRLs contain Subscriber certs and enforces the wrong limit.

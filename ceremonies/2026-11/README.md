@@ -9,4 +9,4 @@ The 2026-11 ceremony includes:
   CRL timings in sync.
 
 No new keys or certificates are created by this ceremony. All four CRLs carry
-CRL number 108, and a next-update of 2027-10-05.
+CRL number 108, and a next-update of 2027-10-31.
