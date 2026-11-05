@@ -1,0 +1,28 @@
+Certificate Revocation List (CRL):
+        Version 2 (0x1)
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X2
+        Last Update: Nov  5 00:00:00 2026 GMT
+        Next Update: Oct  5 23:59:59 2027 GMT
+        CRL extensions:
+            X509v3 Authority Key Identifier: 
+                1B:42:EF:C7:42:BC:09:9C:B7:22:92:6B:3C:0C:B4:AC:F6:68:CF:FD
+            X509v3 CRL Number: 
+                108
+            X509v3 Issuing Distribution Point: critical
+                Only CA Certificates
+
+Revoked Certificates:
+    Serial Number: AB5000426C04A88DAC2D412889235C49
+        Revocation Date: May 13 16:00:00 2026 GMT
+        CRL entry extensions:
+            X509v3 CRL Reason Code: 
+                Superseded
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:65:02:30:78:44:61:65:26:bf:1b:32:bf:47:74:86:cf:5e:
+        35:c3:13:ea:b0:f5:15:14:63:4e:bd:e5:fb:6d:39:98:fa:56:
+        66:b6:84:10:95:ce:5a:b6:9a:6d:fb:68:99:2e:1a:56:02:31:
+        00:ba:6b:ad:ef:8c:e7:5d:f6:40:2e:13:81:85:6f:c3:e9:97:
+        a0:8e:82:bc:23:90:a9:f9:14:84:f6:b3:b3:4c:50:44:d4:30:
+        0f:da:b9:40:db:8d:73:32:27:4a:7d:1d:78

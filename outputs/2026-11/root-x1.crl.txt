@@ -1,0 +1,56 @@
+Certificate Revocation List (CRL):
+        Version 2 (0x1)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, O = Internet Security Research Group, CN = (FAKE) ISRG Root X1
+        Last Update: Nov  5 00:00:00 2026 GMT
+        Next Update: Oct  5 23:59:59 2027 GMT
+        CRL extensions:
+            X509v3 Authority Key Identifier: 
+                3A:EE:D6:3D:4F:B5:48:66:33:8A:71:1D:22:73:D8:69:8E:95:B4:B7
+            X509v3 CRL Number: 
+                108
+            X509v3 Issuing Distribution Point: critical
+                Only CA Certificates
+
+Revoked Certificates:
+    Serial Number: 714BFF8C133339A1B54E055B9FFEE6D6
+        Revocation Date: May 13 16:00:00 2026 GMT
+        CRL entry extensions:
+            X509v3 CRL Reason Code: 
+                Superseded
+    Serial Number: 1B532CF3D107028AC4C28D3009F9B420
+        Revocation Date: May 13 16:00:00 2026 GMT
+        CRL entry extensions:
+            X509v3 CRL Reason Code: 
+                Superseded
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        05:69:62:60:ee:bf:20:7a:92:40:b9:95:ab:f5:85:a7:74:41:
+        19:5e:a2:3a:cc:0e:dc:56:31:0d:33:ee:f2:f3:95:d2:e6:ea:
+        ce:fb:ae:6d:cd:da:28:63:46:7b:64:0c:8d:0c:dc:4d:6d:7f:
+        e7:a5:65:a3:06:bf:6f:1a:b1:02:b9:0c:ba:51:1f:b5:bf:08:
+        54:59:17:48:24:d3:0e:8a:a8:88:9d:16:fa:18:aa:4a:40:9e:
+        56:da:ad:05:47:e8:14:fc:40:de:58:01:f5:c8:14:36:24:3d:
+        e2:44:86:cb:8c:82:ec:07:6e:06:85:85:90:33:33:de:c9:ff:
+        bb:58:ec:11:01:c8:90:39:2e:50:89:d3:b2:eb:8b:f3:ea:bd:
+        93:67:0b:8e:8e:a4:bb:56:55:b4:5e:84:da:00:00:1c:8e:16:
+        bd:fc:3f:1a:4a:a1:b5:f8:72:4f:9f:0a:aa:db:4d:98:15:a9:
+        fd:40:de:4c:11:bd:92:65:53:68:e9:47:19:c9:a8:de:d7:5b:
+        12:c3:f8:a2:59:ea:b8:6b:e3:74:12:76:20:59:8f:3b:da:69:
+        52:f4:8c:b6:69:42:cc:c8:47:7c:98:ad:5e:ed:da:d4:bf:4a:
+        fb:a4:8d:84:12:55:b9:d1:40:d0:fa:ef:3b:3c:01:ae:2b:28:
+        24:22:d6:ff:25:77:8d:02:d7:88:fc:47:1c:dc:36:3b:0c:ea:
+        a0:3e:98:9a:ea:4a:60:4d:fb:6d:2f:c1:a5:8d:f8:6e:cd:95:
+        32:84:ed:7d:a8:de:f6:e1:3c:92:93:50:f0:6b:b0:43:e4:4d:
+        22:57:b6:f1:d2:0e:ff:1e:fb:d3:70:39:ae:76:47:f5:40:8a:
+        e5:fe:5d:51:c9:ac:76:4a:35:56:66:23:dc:a2:3e:22:28:54:
+        79:16:1e:4d:99:30:6f:56:76:3f:a8:41:56:87:a5:8c:9c:f7:
+        b7:f4:fc:00:fa:b3:21:70:7e:7b:8b:1f:81:47:68:8c:e9:26:
+        06:29:10:ac:cd:bd:e8:d1:c9:77:de:1a:1d:98:ff:cb:1e:13:
+        15:43:d1:b9:c4:f0:4b:8f:2b:50:f5:47:d3:8c:7a:56:0e:80:
+        b9:c1:7c:0e:5a:49:fc:a1:f8:54:67:bc:f2:96:2e:be:23:4f:
+        e3:6a:51:9f:41:10:54:07:f0:2b:5f:29:4c:08:43:6c:36:75:
+        29:b5:eb:81:8f:5c:a2:1d:74:15:a3:86:f4:30:f8:00:73:ed:
+        65:1f:fe:dd:e4:0d:b2:92:79:ed:08:6d:c1:07:de:b7:a1:75:
+        47:b0:10:0a:35:1a:d9:fe:78:67:75:9c:ec:3d:d0:d9:3c:13:
+        f2:c7:0f:79:24:b5:b5:ff

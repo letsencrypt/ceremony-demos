@@ -2,24 +2,24 @@ Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
-            12:81:9f:5d:99:06:97:dc:8e:27:08:3f:64:f3:a0:7c
+            c9:94:96:42:c1:13:f2:39:d7:8b:ed:34:ff:c2:79:b1
         Signature Algorithm: ecdsa-with-SHA384
-        Issuer: C=US, O=ISRG, CN=(FAKE) Root YE
+        Issuer: C = US, O = ISRG, CN = (FAKE) Root YE
         Validity
             Not Before: Sep  3 00:00:00 2025 GMT
             Not After : Sep  2 23:59:59 2045 GMT
-        Subject: C=US, O=ISRG, CN=(FAKE) Root YE
+        Subject: C = US, O = ISRG, CN = (FAKE) Root YE
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (384 bit)
                 pub:
-                    04:37:30:be:90:f7:9a:4a:1d:e9:af:b7:d8:d6:73:
-                    90:a7:c2:bb:a0:5f:54:54:d1:5e:1e:ca:3e:03:92:
-                    a6:30:94:d2:46:d0:4b:ed:dc:7a:dd:4a:f6:e7:79:
-                    60:d3:90:51:06:03:68:c5:26:75:f5:e3:71:39:ae:
-                    ee:52:af:4f:0b:cf:71:a2:90:b2:b0:9d:f8:c7:a3:
-                    38:db:ca:d4:b5:1f:57:a7:45:5d:0d:80:4b:8f:e6:
-                    e5:45:5c:b1:9a:06:e9
+                    04:48:c3:76:f1:0f:88:3d:55:c3:a8:a4:e7:e2:c2:
+                    43:bf:f8:a6:83:6e:d3:5f:3b:2b:95:05:f9:df:17:
+                    45:ea:ac:9a:83:87:c8:5d:ad:0e:95:da:5a:99:d1:
+                    7c:21:d6:d6:9b:49:43:7a:6b:e1:85:3e:4f:69:0a:
+                    80:cc:48:5e:ed:50:a3:cc:ee:73:98:f0:ab:17:dd:
+                    4c:ce:2b:1e:36:e7:88:fb:42:bc:3c:47:3a:5c:0b:
+                    8f:d9:db:95:7d:74:fd
                 ASN1 OID: secp384r1
                 NIST CURVE: P-384
         X509v3 extensions:
@@ -28,12 +28,12 @@ Certificate:
             X509v3 Basic Constraints: critical
                 CA:TRUE
             X509v3 Subject Key Identifier: 
-                87:42:D2:BB:8F:7B:8A:66:F5:E7:86:39:BB:94:C7:64:03:96:B3:23
+                A8:D9:F9:84:92:40:D4:2C:30:0B:17:B8:52:40:9B:98:E1:81:DF:81
     Signature Algorithm: ecdsa-with-SHA384
     Signature Value:
-        30:65:02:31:00:b0:41:07:12:fc:3a:a6:85:b9:b6:de:90:74:
-        e7:2d:be:56:72:5c:91:be:4c:58:16:f8:f1:c0:e3:d3:b7:77:
-        ee:39:7c:d6:ce:e6:4b:c7:3e:ec:0c:cb:b4:5e:b4:c0:15:02:
-        30:5e:b0:ed:c3:2d:6b:84:7f:b0:d7:97:d8:6d:57:df:f0:c6:
-        bc:86:6a:e2:c8:41:89:81:45:d6:4f:db:c2:63:99:38:68:cd:
-        0f:d3:7e:cf:bc:8c:ff:75:f1:f3:93:e3:6f
+        30:64:02:30:02:53:88:44:c1:f2:11:46:41:90:a1:cd:a0:72:
+        3b:52:d1:38:66:7b:fc:b5:e1:a8:4e:8a:ef:fa:be:c5:ad:01:
+        4b:97:58:58:95:3c:28:a2:66:0f:7c:99:af:5f:30:ce:02:30:
+        57:60:9e:66:a2:1b:88:a8:80:35:4d:42:d1:50:db:41:20:e5:
+        74:5d:22:68:e8:15:22:d1:76:b4:69:dd:62:fd:bd:bd:77:50:
+        26:20:4d:75:3d:69:64:40:c5:f4:70:f1
